@@ -1,4 +1,4 @@
-> ### 🌐 **[Открыть инструмент →](https://frakturehawkens.github.io/cs2-v4ir/)**
+> ### 🌐 **[Website for use→](https://frakturehawkens.github.io/cs2-v4ir/)**
 
 ---
 
