@@ -36,7 +36,7 @@ To auto-load on every launch, add `exec <filename>` to your `autoexec.cfg` in th
 ## Credits
 
 - Counter-Strike 2 — Valve Corporation
-- Share code library — akiver/csgo-sharecode (MIT)
+- Share code library — [akiver/csgo-sharecode](https://github.com/akiver/csgo-sharecode) (MIT) — see THIRD-PARTY-LICENSES.md
 - Library CDN — jsdelivr.net, fallback unpkg.com
 - Prompted & directed by — Frakturehawkens
 - Built with — DeepSeek
