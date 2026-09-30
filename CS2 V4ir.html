@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>CS2 V4ir</title>
+<style>
+:root{
+  --bg:#0a0f1a;
+  --bg-2:#111827;
+  --bg-3:#1a2233;
+  --bg-4:#232d43;
+  --bg-5:#070b13;
+  --border:#223049;
+  --border-2:#2f3f5c;
+  --text:#e6ecf5;
+  --text-mut:#8093b3;
+  --text-dim:#5a6b88;
+  --accent:#ff9d2e;
+  --accent-2:#ffb84d;
+  --accent-dim:#b8701f;
+  --accent-glow:rgba(255,157,46,.18);
+  --danger:#e05252;
+  --danger-dim:#8a2e2e;
+  --ok:#4ec9b0;
+  --header-bg:linear-gradient(135deg,#0e1421 0%,#1a2333 60%,#221a14 100%);
+  --header-stripe:linear-gradient(135deg,transparent 40%,var(--accent) 40%,var(--accent) 55%,transparent 55%);
+  --header-stripe-op:.35;
+  --card-hover:#141c2c;
+  --shadow-card:0 2px 14px rgba(0,0,0,.35);
+  --shadow-toast:0 6px 24px rgba(255,157,46,.4);
+  --shadow-toast-err:0 6px 24px rgba(224,82,82,.4);
+  --input-bg:var(--bg-2);
+  --scheme:dark;
+}
+:root[data-theme="light"]{
+  --bg:#f6f3ec;
+  --bg-2:#ffffff;
+  --bg-3:#f0e9dc;
+  --bg-4:#e6dcc8;
+  --bg-5:#efe9dc;
+  --border:#e2d8c4;
+  --border-2:#cbbda3;
+  --text:#1a1f2b;
+  --text-mut:#5c6478;
+  --text-dim:#8b91a0;
+  --accent:#e67e00;
+  --accent-2:#ff9d2e;
+  --accent-dim:#b35900;
+  --accent-glow:rgba(230,126,0,.22);
+  --danger:#c93a3a;
+  --danger-dim:#f4c8c8;
+  --ok:#0a7a5a;
+  --header-bg:linear-gradient(135deg,#fffaf0 0%,#ffe9c6 60%,#ffd79a 100%);
+  --header-stripe:linear-gradient(135deg,transparent 40%,#e67e00 40%,#e67e00 55%,transparent 55%);
+  --header-stripe-op:.45;
+  --card-hover:#fffaf0;
+  --shadow-card:0 2px 14px rgba(180,120,30,.12);
+  --shadow-toast:0 6px 24px rgba(230,126,0,.35);
+  --shadow-toast-err:0 6px 24px rgba(201,58,58,.3);
+  --input-bg:#ffffff;
+  --scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--text);font-family:-apple-system,system-ui,"Segoe UI",sans-serif;padding:0;font-size:14px;line-height:1.45;transition:background-color .25s,color .25s;color-scheme:var(--scheme);-webkit-tap-highlight-color:transparent}
+.wrap{padding:14px;max-width:900px;margin:0 auto}
+
+.header{position:relative;padding:16px 14px 14px;background:var(--header-bg);border-bottom:2px solid var(--accent-dim);overflow:hidden;transition:background .25s;padding-top:calc(16px + env(safe-area-inset-top))}
+.header::before{content:"";position:absolute;top:0;right:0;width:120px;height:100%;background:var(--header-stripe);opacity:var(--header-stripe-op);pointer-events:none;transition:opacity .25s}
+.header-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;position:relative}
+.header h1{font-size:20px;margin:0;letter-spacing:.5px;font-weight:800;text-transform:uppercase;position:relative;word-break:break-word}
+.header h1 .v{color:var(--accent);font-weight:900}
+.header h1 .dot{display:inline-block;width:6px;height:6px;background:var(--accent);border-radius:50%;vertical-align:middle;margin:0 4px 4px;box-shadow:0 0 8px var(--accent)}
+.header .sub{position:relative;font-size:11px;color:var(--text-mut);margin-top:3px;letter-spacing:1.5px;text-transform:uppercase}
+.theme-toggle{flex-shrink:0;width:42px;height:42px;border-radius:50%;padding:0;margin:0;font-size:18px;line-height:1;display:flex;align-items:center;justify-content:center;background:var(--bg-2);border:1px solid var(--border-2);color:var(--text);cursor:pointer;transition:transform .2s,background .2s,color .2s,border-color .2s;position:relative;z-index:2;touch-action:manipulation}
+.theme-toggle:hover{background:var(--accent);color:#fff;border-color:var(--accent);transform:rotate(15deg)}
+.theme-toggle:active{transform:scale(.92) rotate(15deg)}
+
+h3{font-size:11px;color:var(--accent);margin:18px 0 8px;text-transform:uppercase;letter-spacing:1.2px;font-weight:700}
+h3.warn{color:var(--danger)}
+label{display:block;margin-top:10px;font-size:11px;color:var(--text-mut);text-transform:uppercase;letter-spacing:.5px}
+input,select,textarea{width:100%;background:var(--input-bg);color:var(--text);border:1px solid var(--border);border-radius:6px;padding:9px;font-family:inherit;font-size:13px;margin-top:4px;transition:border-color .15s,box-shadow .15s,background .25s,color .25s;touch-action:manipulation}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-glow)}
+textarea{resize:vertical}
+button{background:var(--bg-3);color:var(--text);border:1px solid var(--border-2);border-radius:6px;padding:11px 14px;font-size:13px;margin-top:8px;cursor:pointer;font-family:inherit;font-weight:600;letter-spacing:.3px;transition:background .15s,border-color .15s,transform .05s,box-shadow .15s,color .25s;touch-action:manipulation;-webkit-user-select:none;user-select:none}
+button:hover{background:var(--bg-4);border-color:var(--accent-dim)}
+button:active{transform:scale(.98)}
+button.primary{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:800}
+button.primary:hover{background:var(--accent-2);border-color:var(--accent-2);box-shadow:0 0 12px var(--accent-glow)}
+button.dang{background:transparent;color:var(--danger);border-color:var(--danger-dim)}
+button.dang:hover{background:var(--danger);color:#fff;border-color:var(--danger)}
+button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-width:38px;min-height:38px;display:inline-flex;align-items:center;justify-content:center}
+
+.tabs{display:flex;gap:4px;margin:0;background:var(--bg-2);padding:4px;border-bottom:1px solid var(--border);transition:background .25s,border-color .25s;position:sticky;top:0;z-index:5;padding-top:calc(4px + env(safe-area-inset-top))}
+.tab{flex:1;padding:12px 8px;text-align:center;background:transparent;border:0;border-radius:6px;cursor:pointer;font-size:12px;color:var(--text-mut);font-family:inherit;font-weight:700;letter-spacing:1px;text-transform:uppercase;transition:color .15s,background .15s;touch-action:manipulation}
+.tab:hover{color:var(--text)}
+.tab.active{background:var(--bg-4);color:var(--accent)}
+.hidden{display:none!important}
+.card{background:var(--bg-2);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:8px;padding:11px;margin-top:9px;transition:background .15s,border-color .15s,box-shadow .15s}
+.card:hover{background:var(--card-hover);box-shadow:var(--shadow-card),inset 0 0 0 1px var(--border-2)}
+.card-head{display:flex;align-items:flex-start;gap:10px}
+.slot-badge{flex-shrink:0;width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--accent-2) 0%,var(--accent) 100%);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;margin-top:1px;box-shadow:0 0 8px var(--accent-glow)}
+.ch-body{flex:1;min-width:0}
+.ch-name{color:var(--text);font-weight:700;font-size:14px;cursor:pointer;display:inline-block;border-bottom:1px dashed transparent;transition:border-color .15s,color .15s;padding:2px 0;touch-action:manipulation}
+.ch-name:hover{border-bottom-color:var(--accent);color:var(--accent)}
+.ch-info{color:var(--text-mut);font-size:11px;margin-top:3px}
+.ch-code{color:var(--ok);font-size:11px;font-family:monospace;word-break:break-all;margin-top:7px;padding:6px 8px;background:var(--bg-5);border-radius:4px;border:1px solid var(--border);-webkit-user-select:all;user-select:all}
+.ch-actions{display:flex;gap:5px;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end}
+.res{background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:11px;margin-top:10px;word-break:break-word;font-family:monospace;font-size:12px}
+.res pre{margin:0;white-space:pre;overflow-x:auto;color:var(--ok);-webkit-overflow-scrolling:touch}
+.code{color:var(--accent);font-size:13px;word-break:break-all}
+.err{color:var(--danger);border-color:var(--danger-dim);background:var(--bg-2)}
+:root:not([data-theme="light"]) .err{background:#1a0e0e}
+.empty{color:var(--text-dim);font-style:italic;padding:18px;text-align:center;font-size:12px;border:1px dashed var(--border);border-radius:8px;background:var(--bg-2)}
+.toast{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;padding:11px 18px;border-radius:8px;font-size:13px;font-weight:700;opacity:0;pointer-events:none;transition:opacity .2s;z-index:99;max-width:90%;text-align:center;box-shadow:var(--shadow-toast)}
+.toast.show{opacity:1}
+.toast.err{background:var(--danger);color:#fff;box-shadow:var(--shadow-toast-err)}
+.note{font-size:11px;color:var(--text-dim);margin-top:6px}
+
+.credits{margin-top:30px;padding:16px;border-top:1px solid var(--border);color:var(--text-dim);font-size:11px;line-height:1.8;transition:color .25s,border-color .25s;display:flex;flex-direction:column;gap:16px}
+.credits b{color:var(--accent);letter-spacing:1px;text-transform:uppercase;font-size:10px;display:block;margin-bottom:2px}
+.credits .k{color:var(--text-mut);font-family:monospace}
+.credits .about p{margin:6px 0 0;color:var(--text-mut);font-size:11px;line-height:1.7}
+.credits .about p .k{color:var(--text-mut);font-family:monospace}
+.credits .credit-block{line-height:1.9}
+
+.row-btns{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.row-btns button{margin-top:0;width:100%}
+.paste-row{display:flex;gap:6px;margin-top:4px;align-items:flex-start}
+.paste-row textarea{flex:1;margin-top:0}
+.paste-row button{flex-shrink:0;margin-top:0;padding:9px 11px;font-size:11px;height:auto;min-height:44px;min-width:60px;align-self:stretch}
+.divider{height:1px;background:var(--border);margin:14px 0;transition:background .25s}
+
+@media(max-width:640px){
+  body{font-size:14px}
+  .wrap{padding:12px}
+  .header{padding:14px 12px 12px;padding-top:calc(14px + env(safe-area-inset-top))}
+  .header h1{font-size:18px}
+  .header .sub{font-size:10px;letter-spacing:1.2px}
+  .theme-toggle{width:40px;height:40px;font-size:17px}
+  input,select,textarea{font-size:16px;padding:11px}
+  .ch-code{font-size:12px}
+  .paste-row textarea{font-size:14px}
+  .tab{padding:13px 8px;font-size:12px}
+  button{padding:12px 14px;font-size:14px}
+  button.sm{padding:8px 11px;font-size:13px;min-width:44px;min-height:44px}
+  .slot-badge{width:32px;height:32px;font-size:14px}
+  .ch-name{font-size:15px;padding:4px 0}
+  .ch-info{font-size:12px}
+  .card{padding:12px}
+  .row-btns{grid-template-columns:1fr;gap:8px}
+  .paste-row{flex-direction:column}
+  .paste-row button{align-self:stretch;min-height:44px}
+  .credits{font-size:11px;padding:14px}
+}
+@media(max-width:380px){
+  .header h1{font-size:16px}
+  .header .sub{display:none}
+  .tab{font-size:11px;letter-spacing:.5px;padding:12px 6px}
+  button.sm{min-width:40px;padding:7px 9px}
+}
+@media(hover:none){
+  button:hover{background:var(--bg-3);border-color:var(--border-2)}
+  button.primary:hover{background:var(--accent);border-color:var(--accent)}
+  button.dang:hover{background:transparent;color:var(--danger);border-color:var(--danger-dim)}
+  .card:hover{background:var(--bg-2);box-shadow:none}
+  .ch-name:hover{border-bottom-color:transparent;color:var(--text)}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="wrap" style="padding:0 4px">
+    <div class="header-top">
+      <div>
+        <h1><span class="dot"></span>CS2 <span class="v">V4ir</span></h1>
+        <div class="sub">Crosshair Profile Tool</div>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" title="Toggle theme">🌙</button>
+    </div>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" data-tab="dec">Decoder</button>
+  <button class="tab" data-tab="prof">Profile</button>
+</div>
+
+<div class="wrap">
+
+<div id="tab-dec">
+  <label>CSGO-... codes (one per line)</label>
+  <textarea id="d-in" rows="4" placeholder="CSGO-xxxxx-xxxxx-xxxxx-xxxxx-xxxxx"></textarea>
+  <button class="primary" id="btn-dec">Decode</button>
+  <div id="dec-out"></div>
+</div>
+
+<div id="tab-prof" class="hidden">
+  <label>Profile name (latin letters, digits, _ and - only)</label>
+  <input id="p-name" value="My profile" autocomplete="off" spellcheck="false">
+
+  <h3>Crosshairs · Numpad 1–9</h3>
+  <div id="p-list"></div>
+  <button id="btn-add-code">📥 Add from code</button>
+
+  <div class="divider"></div>
+
+  <h3>Export</h3>
+  <div class="row-btns">
+    <button id="btn-export">💾 Save CFG</button>
+    <button id="btn-preview-cfg">👁 Preview CFG</button>
+    <button id="btn-export-codes">🔗 Share codes</button>
+    <button id="btn-export-json">📤 Export JSON</button>
+  </div>
+
+  <div class="divider"></div>
+
+  <h3>Import</h3>
+  <div class="row-btns">
+    <button id="btn-import-json-text">📝 Import JSON (paste)</button>
+    <button id="btn-import-json-file">📁 Import JSON (file)</button>
+    <button id="btn-import-cfg-text">📝 Import CFG (paste)</button>
+    <button id="btn-import-cfg-file">📁 Import CFG (file)</button>
+  </div>
+
+  <div class="divider"></div>
+
+  <h3 class="warn">Danger zone</h3>
+  <div class="row-btns">
+    <button class="dang" id="btn-clear">🗑 Clear profile</button>
+    <button class="hidden" id="btn-restore">↶ Restore last cleared</button>
+  </div>
+
+  <div id="p-prev" class="res hidden" style="max-height:400px;overflow-y:auto"></div>
+</div>
+
+<div class="credits">
+  <div class="about">
+    <b>About</b>
+    <p>A tool for collecting CS2 crosshairs you actually use, decoding share codes, and packing them into a single ready-to-use <span class="k">.cfg</span> with Numpad 1–9 binds for instant switching in-game.</p>
+  </div>
+  <div class="credit-block">
+    <b>Credits</b><br>
+    Counter-Strike 2 — Valve Corporation<br>
+    Share code library — <span class="k">akiver/csgo-sharecode</span> (MIT)<br>
+    Library CDN — <span class="k">jsdelivr.net</span>, fallback <span class="k">unpkg.com</span><br>
+    Prompted &amp; directed by — <span class="k">Frakturehawkens</span><br>
+    Built with — <span class="k">DeepSeek</span>
+  </div>
+</div>
+
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script>
+(function() {
+  'use strict';
+
+  var THEME_KEY = 'cs2_v4ir_theme';
+  var themeToggle = document.getElementById('theme-toggle');
+
+  function applyTheme(theme) {
+    if (theme === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light');
+      themeToggle.textContent = '☀️';
+      themeToggle.title = 'Switch to dark theme';
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      themeToggle.textContent = '🌙';
+      themeToggle.title = 'Switch to light theme';
+    }
+  }
+  function loadTheme() {
+    var saved;
+    try { saved = localStorage.getItem(THEME_KEY); } catch (e) {}
+    if (saved === 'light' || saved === 'dark') return saved;
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) return 'light';
+    return 'dark';
+  }
+  applyTheme(loadTheme());
+  themeToggle.addEventListener('click', function() {
+    var current = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+    var next = current === 'light' ? 'dark' : 'light';
+    applyTheme(next);
+    try { localStorage.setItem(THEME_KEY, next); } catch (e) {}
+  });
+
+  var lib = null, libErr = null;
+  var lastCleared = null;
+
+  function $(id) { return document.getElementById(id); }
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function(c) {
+      return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c];
+    });
+  }
+  function toast(m, e) {
+    var t = $('toast');
+    t.textContent = m;
+    t.className = 'toast show' + (e ? ' err' : '');
+    setTimeout(function() { t.className = 'toast'; }, 2000);
+  }
+  function scrollIntoViewSoft(el) {
+    if (!el) return;
+    setTimeout(function() {
+      try { el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+      catch (e) { el.scrollIntoView(); }
+    }, 60);
+  }
+  function num(v, fb) {
+    return (v === undefined || v === null || (typeof v === 'number' && isNaN(v))) ? fb : v;
+  }
+  function slug(s) {
+    return String(s || 'profile')
+      .toLowerCase()
+      .replace(/[^a-z0-9_\-]+/g, '_')
+      .replace(/^_+|_+$/g, '')
+      .substring(0, 40) || 'profile';
+  }
+  function copyToClipboard(text, okMsg) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function() {
+        toast(okMsg || 'Copied');
+      }, function() { toast('Copy failed', 1); });
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); toast(okMsg || 'Copied'); }
+      catch (e) { toast('Copy failed', 1); }
+      document.body.removeChild(ta);
+    }
+  }
+  function pasteFromClipboard(target) {
+    if (navigator.clipboard && navigator.clipboard.readText) {
+      navigator.clipboard.readText().then(function(txt) {
+        target.value = txt;
+        toast('Pasted');
+      }, function() {
+        target.focus();
+        toast('Press Ctrl+V to paste', 1);
+      });
+    } else {
+      target.focus();
+      toast('Press Ctrl+V to paste', 1);
+    }
+  }
+  function sanitizeName(s) {
+    return String(s || '').replace(/[^a-zA-Z0-9 _\-]/g, '');
+  }
+  function pickFile(accept, onLoad) {
+    var inp = document.createElement('input');
+    inp.type = 'file';
+    inp.accept = accept;
+    inp.style.display = 'none';
+    document.body.appendChild(inp);
+    inp.addEventListener('change', function() {
+      var file = inp.files && inp.files[0];
+      if (!file) { document.body.removeChild(inp); return; }
+      var reader = new FileReader();
+      reader.onload = function() {
+        try { onLoad(reader.result, file.name); }
+        catch (e) { toast('Read error: ' + e.message, 1); }
+        document.body.removeChild(inp);
+      };
+      reader.onerror = function() {
+        toast('Failed to read file', 1);
+        document.body.removeChild(inp);
+      };
+      reader.readAsText(file);
+    });
+    inp.click();
+  }
+
+  var STY = {
+    0: 'Dynamic Cross', 1: 'Dynamic Circle', 2: 'Dynamic Cross Legacy',
+    3: 'Static Circle', 4: 'Static Cross', 5: 'Static Cross ShotFB',
+    6: 'Dot Only', 7: 'Dynamic Quad', 8: 'Static Square'
+  };
+  var OM = { 0: 'No outline', 1: 'Full outline', 2: 'Half outline' };
+
+  var SK = 'cs2_v4ir_profile_v1';
+  var state = { name: 'My profile', crosshairs: {} };
+
+  function loadState() {
+    try {
+      var r = localStorage.getItem(SK);
+      if (r) {
+        var p = JSON.parse(r);
+        if (p && p.crosshairs) state = p;
+      }
+    } catch (e) { console.warn(e); }
+  }
+  function saveState() {
+    try { localStorage.setItem(SK, JSON.stringify(state)); } catch (e) { console.warn(e); }
+  }
+
+  function toCommands(d) {
+    var style = num(d.style, 4);
+    var om = num(d.outlineMode, 0);
+    var outlineDraw = om > 0 ? 1 : 0;
+    var outlineThick = om === 2 ? 0.5 : (om === 1 ? 1 : 0);
+    var length    = num(d.length, 2);
+    var thickness = num(d.thickness, 1);
+    var gap       = num(d.gap, 0);
+
+    return [
+      'cl_crosshairstyle ' + style,
+      'cl_crosshairsize ' + length,
+      'cl_crosshair_length ' + length,
+      'cl_crosshairthickness ' + thickness,
+      'cl_crosshair_thickness ' + thickness,
+      'cl_crosshairgap ' + gap,
+      'cl_crosshair_gap ' + gap,
+      'cl_crosshairdot ' + (d.centerDotEnabled ? 1 : 0),
+      'cl_crosshair_t ' + (d.tStyleEnabled ? 1 : 0),
+      'cl_crosshair_drawoutline ' + outlineDraw,
+      'cl_crosshair_outlinethickness ' + outlineThick,
+      'cl_crosshaircolor ' + num(d.color, 5),
+      'cl_crosshaircolor_r ' + num(d.red, 0),
+      'cl_crosshaircolor_g ' + num(d.green, 255),
+      'cl_crosshaircolor_b ' + num(d.blue, 0),
+      'cl_crosshairalpha ' + num(d.alpha, 255),
+      'cl_crosshairusealpha ' + (d.alphaEnabled !== false ? 1 : 0),
+      'cl_crosshair_recoil ' + (d.followRecoil ? 1 : 0),
+      'cl_crosshairgap_useweaponvalue ' + (d.deployedWeaponGapEnabled ? 1 : 0),
+      'cl_fixedcrosshairgap 3',
+      'cl_crosshair_dynamic_splitdist ' + num(d.splitDistance, 0),
+      'cl_crosshair_dynamic_maxdist_splitratio ' + num(d.splitSizeRatio, 1),
+      'cl_crosshair_dynamic_splitalpha_innermod ' + num(d.innerSplitAlpha, 0),
+      'cl_crosshair_dynamic_splitalpha_outermod ' + num(d.outerSplitAlpha, 1)
+    ];
+  }
+  function formatCommands(cmds) {
+    return cmds.map(function(c) { return c + ';'; }).join('\n');
+  }
+  function decodeToCh(d) {
+    return {
+      name: 'Import ' + new Date().toLocaleTimeString('en-US', {hour:'2-digit',minute:'2-digit'}),
+      style: d.style, color: num(d.color, 5),
+      length: num(d.length, 2), thickness: num(d.thickness, 1), gap: num(d.gap, 0),
+      centerDotEnabled: !!d.centerDotEnabled,
+      tStyleEnabled: !!d.tStyleEnabled,
+      followRecoil: !!d.followRecoil,
+      red: num(d.red, 0), green: num(d.green, 255), blue: num(d.blue, 0), alpha: num(d.alpha, 255),
+      alphaEnabled: d.alphaEnabled !== false,
+      deployedWeaponGapEnabled: !!d.deployedWeaponGapEnabled,
+      outlineMode: num(d.outlineMode, 0), outline: num(d.outline, 0),
+      splitDistance: num(d.splitDistance, 0), splitSizeRatio: num(d.splitSizeRatio, 1),
+      innerSplitAlpha: num(d.innerSplitAlpha, 0), outerSplitAlpha: num(d.outerSplitAlpha, 1),
+      screenHeight: num(d.screenHeight, 1080)
+    };
+  }
+  function encodeToShareCode(ch) {
+    if (!lib || !lib.encodeCrosshair) return null;
+    try {
+      return lib.encodeCrosshair({
+        version: 4, style: ch.style, color: ch.color,
+        length: ch.length, thickness: ch.thickness, gap: ch.gap,
+        centerDotEnabled: ch.centerDotEnabled,
+        tStyleEnabled: ch.tStyleEnabled,
+        followRecoil: ch.followRecoil,
+        red: ch.red, green: ch.green, blue: ch.blue, alpha: ch.alpha,
+        alphaEnabled: ch.alphaEnabled,
+        deployedWeaponGapEnabled: ch.deployedWeaponGapEnabled,
+        outlineMode: ch.outlineMode, outline: ch.outline,
+        splitDistance: ch.splitDistance, splitSizeRatio: ch.splitSizeRatio,
+        innerSplitAlpha: ch.innerSplitAlpha, outerSplitAlpha: ch.outerSplitAlpha,
+        screenHeight: ch.screenHeight
+      });
+    } catch (e) { console.warn('encode failed', e); return null; }
+  }
+  function addCodeToProfile(code) {
+    if (!lib) { toast('Decoder not loaded', 1); return; }
+    var d;
+    try { d = lib.decodeCrosshairShareCode(code); }
+    catch (e) { toast('Decode error: ' + e.message, 1); return; }
+
+    var used = Object.keys(state.crosshairs).map(Number);
+    var free = [];
+    for (var i = 1; i <= 9; i++) if (used.indexOf(i) === -1) free.push(i);
+
+    var slot;
+    if (free.length > 0) {
+      slot = free[0];
+    } else {
+      var pick = prompt('All 9 slots are full. Replace which one? (1–9)', '1');
+      if (!pick) return;
+      slot = parseInt(pick, 10);
+      if (isNaN(slot) || slot < 1 || slot > 9) { toast('Invalid slot', 1); return; }
+    }
+    state.crosshairs[slot] = decodeToCh(d);
+    saveState();
+    toast('Added to Numpad ' + slot);
+    renderProf();
+    scrollIntoViewSoft($('p-list').lastElementChild);
+  }
+
+  function renderDecodeOutput(codes) {
+    var out = $('dec-out');
+    var parts = [];
+    for (var i = 0; i < codes.length; i++) {
+      var c = codes[i];
+      try {
+        var d = lib.decodeCrosshairShareCode(c);
+        var cmds = toCommands(d);
+        var styleName = STY[d.style] || ('style ' + d.style);
+        var omName = (d.outlineMode === undefined || d.outlineMode === null)
+          ? 'unknown'
+          : (OM[d.outlineMode] || ('outline ' + d.outlineMode));
+        var ver = (d.outlineMode === undefined || d.outlineMode === null) ? 'V3' : 'V4';
+        var html = '<div class="res">';
+        html += '<div class="code">' + esc(c) + '</div>';
+        html += '<div class="note" style="margin:6px 0">' + esc(styleName) +
+                ' · Outline: ' + esc(omName) + ' · ' + ver + '</div>';
+        html += '<pre>' + esc(formatCommands(cmds)) + '</pre>';
+        html += '<button class="sm" data-r="copy">📋 Copy</button> ';
+        html += '<button class="sm primary" data-r="add">＋ To profile</button>';
+        html += '</div>';
+        parts.push({ html: html, code: c, cmds: cmds });
+      } catch (e) {
+        parts.push({
+          html: '<div class="res err">' + esc(c) + '\nError: ' + esc(e.message || e) + '</div>',
+          code: null
+        });
+      }
+    }
+    out.innerHTML = parts.map(function(p) { return p.html; }).join('');
+    var blocks = out.querySelectorAll('.res');
+    for (var k = 0; k < blocks.length; k++) {
+      (function(block, item) {
+        if (!item.code) return;
+        var copyBtn = block.querySelector('button[data-r="copy"]');
+        var addBtn = block.querySelector('button[data-r="add"]');
+        if (copyBtn) copyBtn.addEventListener('click', function() {
+          copyToClipboard(formatCommands(item.cmds));
+        });
+        if (addBtn) addBtn.addEventListener('click', function() {
+          addCodeToProfile(item.code);
+        });
+      })(blocks[k], parts[k]);
+    }
+    scrollIntoViewSoft(out);
+  }
+
+  $('btn-dec').addEventListener('click', function() {
+    var raw = $('d-in').value.trim();
+    if (!raw) { $('dec-out').innerHTML = '<div class="res err">Paste a code</div>'; return; }
+    if (libErr) { $('dec-out').innerHTML = '<div class="res err">Library failed to load: ' + esc(libErr.message) + '</div>'; return; }
+    if (!lib) { $('dec-out').innerHTML = '<div class="res err">Decoder loading, wait 2–3 sec</div>'; return; }
+    var codes = raw.split(/\s+/).filter(Boolean);
+    renderDecodeOutput(codes);
+  });
+
+  function renderProf() {
+    $('p-name').value = state.name;
+    var list = $('p-list');
+    list.innerHTML = '';
+    var has = false;
+    for (var i = 1; i <= 9; i++) {
+      var ch = state.crosshairs[i];
+      if (!ch) continue;
+      has = true;
+      var shareCode = encodeToShareCode(ch);
+      var codeLine = shareCode
+        ? '<div class="ch-code">' + esc(shareCode) + '</div>'
+        : '<div class="ch-code" style="color:var(--text-dim)">— share code unavailable —</div>';
+
+      var d = document.createElement('div');
+      d.className = 'card';
+      d.innerHTML =
+        '<div class="card-head">' +
+          '<div class="slot-badge">' + i + '</div>' +
+          '<div class="ch-body">' +
+            '<div class="ch-name" data-slot="' + i + '" title="Tap to rename">' + esc(ch.name || 'Crosshair') + '</div>' +
+            '<div class="ch-info">' + (STY[ch.style] || '?') +
+              ' · len ' + ch.length + ' · th ' + ch.thickness + ' · gap ' + ch.gap + '</div>' +
+            codeLine +
+          '</div>' +
+          '<div class="ch-actions">' +
+            '<button class="sm" data-r="cc" data-code="' + esc(shareCode || '') + '" title="Copy share code">📋</button>' +
+            '<button class="sm" data-r="swap" data-slot="' + i + '" title="Swap slot">⇄</button>' +
+            '<button class="sm dang" data-r="del" data-slot="' + i + '" title="Delete">✕</button>' +
+          '</div>' +
+        '</div>';
+      list.appendChild(d);
+    }
+    if (!has) list.innerHTML = '<div class="empty">Empty. Add from decoder or use the button below.</div>';
+
+    list.querySelectorAll('.ch-name').forEach(function(el) {
+      el.addEventListener('click', function() {
+        var slot = el.dataset.slot;
+        var current = state.crosshairs[slot].name || '';
+        var v = prompt('Rename crosshair on Numpad ' + slot + ':', current);
+        if (v === null) return;
+        v = v.trim().substring(0, 32);
+        if (!v) v = 'Crosshair ' + slot;
+        state.crosshairs[slot].name = v;
+        saveState();
+        renderProf();
+        toast('Renamed');
+      });
+    });
+    list.querySelectorAll('button[data-r="del"]').forEach(function(b) {
+      b.addEventListener('click', function() {
+        var slot = b.dataset.slot;
+        if (confirm('Delete crosshair from Numpad ' + slot + '?')) {
+          delete state.crosshairs[slot];
+          saveState();
+          renderProf();
+        }
+      });
+    });
+    list.querySelectorAll('button[data-r="swap"]').forEach(function(b) {
+      b.addEventListener('click', function() {
+        var from = parseInt(b.dataset.slot, 10);
+        var to = prompt('Swap Numpad ' + from + ' with which slot? (1–9)', '');
+        if (!to) return;
+        to = parseInt(to, 10);
+        if (isNaN(to) || to < 1 || to > 9) { toast('Invalid slot', 1); return; }
+        if (to === from) { toast('Same slot', 1); return; }
+        var tmp = state.crosshairs[from];
+        state.crosshairs[from] = state.crosshairs[to];
+        state.crosshairs[to] = tmp;
+        if (!state.crosshairs[from]) delete state.crosshairs[from];
+        if (!state.crosshairs[to]) delete state.crosshairs[to];
+        saveState();
+        renderProf();
+        toast('Swapped ' + from + ' ⇄ ' + to);
+      });
+    });
+    list.querySelectorAll('button[data-r="cc"]').forEach(function(b) {
+      b.addEventListener('click', function() {
+        if (!b.dataset.code) { toast('Share code unavailable', 1); return; }
+        copyToClipboard(b.dataset.code, 'Share code copied');
+      });
+    });
+  }
+
+  $('p-name').addEventListener('input', function(e) {
+    var cleaned = sanitizeName(e.target.value);
+    if (cleaned !== e.target.value) e.target.value = cleaned;
+    state.name = cleaned || 'My profile';
+    saveState();
+  });
+
+  $('btn-add-code').addEventListener('click', function() {
+    if (!lib) { toast('Decoder not loaded yet', 1); return; }
+    var code = prompt('Paste share code:');
+    if (!code) return;
+    addCodeToProfile(code.trim());
+    renderProf();
+  });
+
+  $('btn-clear').addEventListener('click', function() {
+    if (!Object.keys(state.crosshairs).length) { toast('Profile already empty', 1); return; }
+    if (!confirm('Clear the entire profile?')) return;
+    lastCleared = JSON.parse(JSON.stringify(state));
+    state.crosshairs = {};
+    saveState();
+    renderProf();
+    $('btn-restore').classList.remove('hidden');
+    toast('Profile cleared — press Restore to undo');
+  });
+  $('btn-restore').addEventListener('click', function() {
+    if (!lastCleared) { toast('Nothing to restore', 1); return; }
+    state = lastCleared;
+    lastCleared = null;
+    saveState();
+    renderProf();
+    $('btn-restore').classList.add('hidden');
+    toast('Profile restored');
+  });
+
+  function buildCmds(ch) {
+    return toCommands({
+      style: ch.style, color: ch.color,
+      length: ch.length, thickness: ch.thickness, gap: ch.gap,
+      centerDotEnabled: ch.centerDotEnabled,
+      tStyleEnabled: ch.tStyleEnabled,
+      followRecoil: ch.followRecoil,
+      red: ch.red, green: ch.green, blue: ch.blue, alpha: ch.alpha,
+      alphaEnabled: ch.alphaEnabled,
+      deployedWeaponGapEnabled: ch.deployedWeaponGapEnabled,
+      outlineMode: ch.outlineMode,
+      splitDistance: ch.splitDistance, splitSizeRatio: ch.splitSizeRatio,
+      innerSplitAlpha: ch.innerSplitAlpha, outerSplitAlpha: ch.outerSplitAlpha
+    });
+  }
+  function splitChunks(cmds, max) {
+    var out = [], c = '';
+    for (var i = 0; i < cmds.length; i++) {
+      var cmd = cmds[i];
+      var cand = c ? c + '; ' + cmd : cmd;
+      if (cand.length > max && c) { out.push(c); c = cmd; }
+      else c = cand;
+    }
+    if (c) out.push(c);
+    return out;
+  }
+  function genCFG() {
+    var slots = Object.keys(state.crosshairs).map(Number).sort(function(a,b){ return a-b; });
+    if (!slots.length) return '// Profile is empty';
+    var L = [];
+    L.push('// ============================================');
+    L.push('// CS2 V4ir profile: ' + state.name);
+    L.push('// Generated: ' + new Date().toLocaleString('en-US'));
+    L.push('// Slots: ' + slots.length);
+    L.push('// ============================================');
+    L.push('');
+    slots.forEach(function(bind, i) {
+      var ch = state.crosshairs[bind];
+      var chunks = splitChunks(buildCmds(ch), 200);
+      L.push('// --- Numpad ' + bind + ' : ' + (ch.name || ('Crosshair ' + bind)) + ' ---');
+      chunks.forEach(function(c, j) {
+        L.push('alias "xh' + (i+1) + '_p' + (j+1) + '" "' + c + '"');
+      });
+      L.push('');
+    });
+    L.push('// --- Binds ---');
+    slots.forEach(function(bind, i) {
+      var ch = state.crosshairs[bind];
+      var chunks = splitChunks(buildCmds(ch), 200);
+      var chain = chunks.map(function(_, j) { return 'xh' + (i+1) + '_p' + (j+1); }).join('; ');
+      L.push('bind kp_' + bind + ' "' + chain + '"');
+    });
+    L.push('');
+    L.push('// --- Apply first crosshair ---');
+    var firstCh = state.crosshairs[slots[0]];
+    var firstChunks = splitChunks(buildCmds(firstCh), 200);
+    L.push(firstChunks.map(function(_, j) { return 'xh1_p' + (j+1); }).join('; '));
+    L.push('');
+    L.push('echo "Crosshair profile loaded: ' + state.name.replace(/"/g, '') + '"');
+    return L.join('\n');
+  }
+
+  $('btn-preview-cfg').addEventListener('click', function() {
+    var el = $('p-prev');
+    if (el.classList.contains('hidden')) {
+      el.innerHTML = '<pre>' + esc(genCFG()) + '</pre>';
+      el.classList.remove('hidden');
+      scrollIntoViewSoft(el);
+    } else {
+      el.classList.add('hidden');
+    }
+  });
+
+  $('btn-export-codes').addEventListener('click', function() {
+    var slots = Object.keys(state.crosshairs).map(Number).sort(function(a,b){ return a-b; });
+    if (!slots.length) { toast('Profile is empty', 1); return; }
+    if (!lib) { toast('Decoder not loaded yet', 1); return; }
+    var lines = [];
+    lines.push('CS2 V4ir profile: ' + state.name);
+    lines.push('');
+    slots.forEach(function(bind) {
+      var ch = state.crosshairs[bind];
+      var code = encodeToShareCode(ch);
+      lines.push('Numpad ' + bind + ' — ' + (ch.name || ('Crosshair ' + bind)));
+      lines.push(code || '— (share code unavailable) —');
+      lines.push('');
+    });
+    var text = lines.join('\n').trimEnd();
+    var el = $('p-prev');
+    el.classList.remove('hidden');
+    el.innerHTML =
+      '<div class="note" style="margin-bottom:6px">All share codes:</div>' +
+      '<textarea id="codes-out" rows="18" style="width:100%;font-size:12px;font-family:monospace"></textarea>' +
+      '<button id="codes-copy" class="sm primary" style="margin-top:6px">📋 Copy all</button>';
+    $('codes-out').value = text;
+    $('codes-copy').addEventListener('click', function() {
+      copyToClipboard(text, 'All share codes copied');
+    });
+    scrollIntoViewSoft(el);
+  });
+
+  function parseV4irCfg(text) {
+    var aliases = {};
+    var binds = {};
+    var lines = text.split('\n');
+    for (var i = 0; i < lines.length; i++) {
+      var line = lines[i];
+      var cut = line.indexOf('//');
+      if (cut >= 0) line = line.substring(0, cut);
+      line = line.trim();
+      if (!line) continue;
+      var mAlias = line.match(/^alias\s+"([^"]+)"\s+"([^"]*)"/i);
+      if (mAlias) {
+        aliases[mAlias[1]] = mAlias[2].split(';').map(function(s){return s.trim();}).filter(Boolean);
+        continue;
+      }
+      var mBind = line.match(/^bind\s+kp_?(\d)\s+"([^"]*)"/i);
+      if (mBind) {
+        binds[parseInt(mBind[1], 10)] = mBind[2].split(';').map(function(s){return s.trim();}).filter(Boolean);
+        continue;
+      }
+    }
+    var nameMatch = text.match(/\/\/\s*CS2 V4ir profile:\s*(.+)/i)
+                  || text.match(/\/\/\s*Crosshair Profile:\s*(.+)/i);
+    var profileName = nameMatch ? sanitizeName(nameMatch[1].trim()) : 'Imported profile';
+    if (!profileName) profileName = 'Imported profile';
+    var slotNames = {};
+    var nameRe = /\/\/\s*---\s*Numpad\s+(\d)\s*:\s*(.+?)\s*---/gi;
+    var m;
+    while ((m = nameRe.exec(text)) !== null) {
+      slotNames[parseInt(m[1], 10)] = m[2].trim();
+    }
+    var result = { name: profileName, crosshairs: {} };
+    for (var slot in binds) {
+      if (!binds.hasOwnProperty(slot)) continue;
+      var chain = binds[slot];
+      var allCmds = [];
+      for (var j = 0; j < chain.length; j++) {
+        if (aliases[chain[j]]) allCmds = allCmds.concat(aliases[chain[j]]);
+        else allCmds.push(chain[j]);
+      }
+      var ch = cmdsToCrosshair(allCmds);
+      ch.name = slotNames[slot] || ('Crosshair ' + slot);
+      result.crosshairs[slot] = ch;
+    }
+    return result;
+  }
+  function cmdsToCrosshair(cmds) {
+    var ch = {
+      name: 'Imported',
+      style: 4, color: 5,
+      length: 2, thickness: 1, gap: 0,
+      centerDotEnabled: false, tStyleEnabled: false, followRecoil: false,
+      red: 0, green: 255, blue: 0, alpha: 255,
+      alphaEnabled: true, deployedWeaponGapEnabled: false,
+      outlineMode: 0, outline: 0,
+      splitDistance: 0, splitSizeRatio: 1,
+      innerSplitAlpha: 0, outerSplitAlpha: 1,
+      screenHeight: 1080,
+      _drawoutline: 0, _outlineThick: 1
+    };
+    for (var i = 0; i < cmds.length; i++) {
+      var parts = cmds[i].trim().split(/\s+/);
+      if (parts.length < 2) continue;
+      var key = parts[0].toLowerCase();
+      var val = parts.slice(1).join(' ');
+      var nv = parseFloat(val);
+      var iv = parseInt(val, 10);
+      var bv = (val === '1' || val === 'true');
+      switch (key) {
+        case 'cl_crosshairstyle': ch.style = iv; break;
+        case 'cl_crosshairsize':
+        case 'cl_crosshair_length': ch.length = nv; break;
+        case 'cl_crosshairthickness':
+        case 'cl_crosshair_thickness': ch.thickness = nv; break;
+        case 'cl_crosshairgap':
+        case 'cl_crosshair_gap': ch.gap = nv; break;
+        case 'cl_crosshairdot': ch.centerDotEnabled = bv; break;
+        case 'cl_crosshair_t': ch.tStyleEnabled = bv; break;
+        case 'cl_crosshair_drawoutline': ch._drawoutline = iv; break;
+        case 'cl_crosshair_outlinethickness': ch._outlineThick = nv; break;
+        case 'cl_crosshaircolor': ch.color = iv; break;
+        case 'cl_crosshaircolor_r': ch.red = iv; break;
+        case 'cl_crosshaircolor_g': ch.green = iv; break;
+        case 'cl_crosshaircolor_b': ch.blue = iv; break;
+        case 'cl_crosshairalpha': ch.alpha = iv; break;
+        case 'cl_crosshairusealpha': ch.alphaEnabled = bv; break;
+        case 'cl_crosshair_recoil': ch.followRecoil = bv; break;
+        case 'cl_crosshairgap_useweaponvalue': ch.deployedWeaponGapEnabled = bv; break;
+        case 'cl_crosshair_dynamic_splitdist': ch.splitDistance = nv; break;
+        case 'cl_crosshair_dynamic_maxdist_splitratio': ch.splitSizeRatio = nv; break;
+        case 'cl_crosshair_dynamic_splitalpha_innermod': ch.innerSplitAlpha = nv; break;
+        case 'cl_crosshair_dynamic_splitalpha_outermod': ch.outerSplitAlpha = nv; break;
+      }
+    }
+    if (ch._drawoutline === 0) ch.outlineMode = 0;
+    else if (ch._outlineThick === 0.5) ch.outlineMode = 2;
+    else ch.outlineMode = 1;
+    delete ch._drawoutline;
+    delete ch._outlineThick;
+    return ch;
+  }
+  function applyImportedProfile(parsed, label) {
+    var slots = Object.keys(parsed.crosshairs);
+    if (!slots.length) { toast('No crosshairs found', 1); return; }
+    if (!confirm('Replace current profile with imported one? (' + slots.length + ' crosshairs)')) return;
+    lastCleared = JSON.parse(JSON.stringify(state));
+    $('btn-restore').classList.remove('hidden');
+    state = parsed;
+    saveState();
+    renderProf();
+    $('p-prev').classList.add('hidden');
+    toast(label || ('Imported ' + slots.length + ' crosshairs'));
+  }
+
+  $('btn-import-json-text').addEventListener('click', function() {
+    var el = $('p-prev');
+    el.classList.remove('hidden');
+    el.innerHTML =
+      '<div class="note" style="margin-bottom:6px">Paste JSON and press "Load":</div>' +
+      '<div class="paste-row">' +
+        '<textarea id="json-import" rows="12" style="font-size:12px;font-family:monospace"></textarea>' +
+        '<button id="json-paste" class="sm primary" title="Paste from clipboard">📋 Paste</button>' +
+      '</div>' +
+      '<button id="json-load" class="sm primary" style="margin-top:6px">Load</button>';
+    $('json-paste').addEventListener('click', function() { pasteFromClipboard($('json-import')); });
+    $('json-load').addEventListener('click', function() {
+      var raw = $('json-import').value.trim();
+      if (!raw) { toast('Empty', 1); return; }
+      try {
+        var parsed = JSON.parse(raw);
+        if (!parsed || !parsed.crosshairs) throw new Error('Missing "crosshairs" field');
+        if (!parsed.name) parsed.name = 'My profile';
+        parsed.name = sanitizeName(parsed.name) || 'My profile';
+        applyImportedProfile(parsed, 'JSON loaded');
+      } catch (e) { toast('JSON error: ' + e.message, 1); }
+    });
+    scrollIntoViewSoft(el);
+  });
+
+  $('btn-import-json-file').addEventListener('click', function() {
+    pickFile('.json,application/json', function(text, name) {
+      try {
+        var parsed = JSON.parse(text);
+        if (!parsed || !parsed.crosshairs) throw new Error('Missing "crosshairs" field');
+        if (!parsed.name) parsed.name = 'My profile';
+        parsed.name = sanitizeName(parsed.name) || 'My profile';
+        applyImportedProfile(parsed, 'Imported from ' + name);
+      } catch (e) { toast('JSON error: ' + e.message, 1); }
+    });
+  });
+
+  $('btn-import-cfg-text').addEventListener('click', function() {
+    var el = $('p-prev');
+    el.classList.remove('hidden');
+    el.innerHTML =
+      '<div class="note" style="margin-bottom:6px">Paste V4ir-generated .cfg and press "Load":</div>' +
+      '<div class="paste-row">' +
+        '<textarea id="cfg-import" rows="12" style="font-size:12px;font-family:monospace"></textarea>' +
+        '<button id="cfg-paste" class="sm primary" title="Paste from clipboard">📋 Paste</button>' +
+      '</div>' +
+      '<button id="cfg-load" class="sm primary" style="margin-top:6px">Load</button>';
+    $('cfg-paste').addEventListener('click', function() { pasteFromClipboard($('cfg-import')); });
+    $('cfg-load').addEventListener('click', function() {
+      var raw = $('cfg-import').value;
+      if (!raw || !raw.trim()) { toast('Empty', 1); return; }
+      try {
+        var parsed = parseV4irCfg(raw);
+        applyImportedProfile(parsed, 'CFG loaded');
+      } catch (e) { toast('Parse error: ' + e.message, 1); }
+    });
+    scrollIntoViewSoft(el);
+  });
+
+  $('btn-import-cfg-file').addEventListener('click', function() {
+    pickFile('.cfg,.txt,text/plain', function(text, name) {
+      try {
+        var parsed = parseV4irCfg(text);
+        applyImportedProfile(parsed, 'Imported from ' + name);
+      } catch (e) { toast('Parse error: ' + e.message, 1); }
+    });
+  });
+
+  async function exportText(text, filename, mimeType) {
+    mimeType = mimeType || 'text/plain';
+    if (window.showSaveFilePicker) {
+      try {
+        var handle = await window.showSaveFilePicker({
+          suggestedName: filename,
+          types: [{ description: 'File', accept: { 'text/plain': ['.cfg', '.json', '.txt'] } }]
+        });
+        var writable = await handle.createWritable();
+        await writable.write(text);
+        await writable.close();
+        toast('File saved');
+        return;
+      } catch (e) {
+        if (e && e.name === 'AbortError') return;
+        console.warn('showSaveFilePicker failed', e);
+      }
+    }
+    try {
+      var blob = new Blob([text], { type: mimeType + ';charset=utf-8' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      a.style.display = 'none';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(function() { URL.revokeObjectURL(url); }, 2000);
+      toast('File ' + filename + ' downloaded');
+      return;
+    } catch (e) { console.warn('download failed', e); }
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      try {
+        await navigator.clipboard.writeText(text);
+        toast('Copied to clipboard');
+        return;
+      } catch (e) { console.warn('clipboard failed', e); }
+    }
+    showTextFallback(text);
+  }
+  function showTextFallback(text) {
+    var el = $('p-prev');
+    el.classList.remove('hidden');
+    el.innerHTML =
+      '<div class="note" style="margin-bottom:6px">Copy manually (Ctrl+C / long-press → Copy):</div>' +
+      '<textarea id="manual-copy" rows="15" style="width:100%;font-size:12px;font-family:monospace"></textarea>';
+    var ta = $('manual-copy');
+    ta.value = text;
+    ta.focus();
+    ta.select();
+    toast('Select and copy', 1);
+    scrollIntoViewSoft(el);
+  }
+
+  $('btn-export').addEventListener('click', function() {
+    if (!Object.keys(state.crosshairs).length) { toast('Profile is empty', 1); return; }
+    var filename = slug(state.name) + '.cfg';
+    exportText(genCFG(), filename);
+  });
+  $('btn-export-json').addEventListener('click', function() {
+    var filename = slug(state.name) + '.json';
+    exportText(JSON.stringify(state, null, 2), filename);
+  });
+
+  document.querySelectorAll('.tab').forEach(function(t) {
+    t.addEventListener('click', function() {
+      document.querySelectorAll('.tab').forEach(function(x) { x.classList.remove('active'); });
+      t.classList.add('active');
+      $('tab-dec').classList.toggle('hidden', t.dataset.tab !== 'dec');
+      $('tab-prof').classList.toggle('hidden', t.dataset.tab !== 'prof');
+      if (t.dataset.tab === 'prof') renderProf();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
+  loadState();
+  renderProf();
+
+  var libUrls = [
+    'https://cdn.jsdelivr.net/npm/csgo-sharecode@6.0.0/dist/index.js',
+    'https://unpkg.com/csgo-sharecode@6.0.0/dist/index.js'
+  ];
+  (async function loadLib() {
+    for (var u = 0; u < libUrls.length; u++) {
+      try {
+        var mod = await import(libUrls[u]);
+        lib = mod;
+        console.log('csgo-sharecode loaded from ' + libUrls[u]);
+        renderProf();
+        return;
+      } catch (e) {
+        console.warn('load failed: ' + libUrls[u], e);
+        libErr = e;
+      }
+    }
+    console.warn('all CDNs failed');
+  })();
+
+})();
+</script>
+</body>
+</html>
