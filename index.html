@@ -6,66 +6,35 @@
 <title>CS2 V4ir</title>
 <style>
 :root{
-  --bg:#0a0f1a;
-  --bg-2:#111827;
-  --bg-3:#1a2233;
-  --bg-4:#232d43;
-  --bg-5:#070b13;
-  --border:#223049;
-  --border-2:#2f3f5c;
-  --text:#e6ecf5;
-  --text-mut:#8093b3;
-  --text-dim:#5a6b88;
-  --accent:#ff9d2e;
-  --accent-2:#ffb84d;
-  --accent-dim:#b8701f;
-  --accent-glow:rgba(255,157,46,.18);
-  --danger:#e05252;
-  --danger-dim:#8a2e2e;
-  --ok:#4ec9b0;
+  --bg:#0a0f1a;--bg-2:#111827;--bg-3:#1a2233;--bg-4:#232d43;--bg-5:#070b13;
+  --border:#223049;--border-2:#2f3f5c;--text:#e6ecf5;--text-mut:#8093b3;--text-dim:#5a6b88;
+  --accent:#ff9d2e;--accent-2:#ffb84d;--accent-dim:#b8701f;--accent-glow:rgba(255,157,46,.18);
+  --danger:#e05252;--danger-dim:#8a2e2e;--ok:#4ec9b0;
   --header-bg:linear-gradient(135deg,#0e1421 0%,#1a2333 60%,#221a14 100%);
   --header-stripe:linear-gradient(135deg,transparent 40%,var(--accent) 40%,var(--accent) 55%,transparent 55%);
-  --header-stripe-op:.35;
-  --card-hover:#141c2c;
+  --header-stripe-op:.35;--card-hover:#141c2c;
   --shadow-card:0 2px 14px rgba(0,0,0,.35);
   --shadow-toast:0 6px 24px rgba(255,157,46,.4);
   --shadow-toast-err:0 6px 24px rgba(224,82,82,.4);
-  --input-bg:var(--bg-2);
-  --scheme:dark;
+  --input-bg:var(--bg-2);--scheme:dark;
 }
 :root[data-theme="light"]{
-  --bg:#f6f3ec;
-  --bg-2:#ffffff;
-  --bg-3:#f0e9dc;
-  --bg-4:#e6dcc8;
-  --bg-5:#efe9dc;
-  --border:#e2d8c4;
-  --border-2:#cbbda3;
-  --text:#1a1f2b;
-  --text-mut:#5c6478;
-  --text-dim:#8b91a0;
-  --accent:#e67e00;
-  --accent-2:#ff9d2e;
-  --accent-dim:#b35900;
-  --accent-glow:rgba(230,126,0,.22);
-  --danger:#c93a3a;
-  --danger-dim:#f4c8c8;
-  --ok:#0a7a5a;
+  --bg:#f6f3ec;--bg-2:#ffffff;--bg-3:#f0e9dc;--bg-4:#e6dcc8;--bg-5:#efe9dc;
+  --border:#e2d8c4;--border-2:#cbbda3;--text:#1a1f2b;--text-mut:#5c6478;--text-dim:#8b91a0;
+  --accent:#e67e00;--accent-2:#ff9d2e;--accent-dim:#b35900;--accent-glow:rgba(230,126,0,.22);
+  --danger:#c93a3a;--danger-dim:#f4c8c8;--ok:#0a7a5a;
   --header-bg:linear-gradient(135deg,#fffaf0 0%,#ffe9c6 60%,#ffd79a 100%);
   --header-stripe:linear-gradient(135deg,transparent 40%,#e67e00 40%,#e67e00 55%,transparent 55%);
-  --header-stripe-op:.45;
-  --card-hover:#fffaf0;
+  --header-stripe-op:.45;--card-hover:#fffaf0;
   --shadow-card:0 2px 14px rgba(180,120,30,.12);
   --shadow-toast:0 6px 24px rgba(230,126,0,.35);
   --shadow-toast-err:0 6px 24px rgba(201,58,58,.3);
-  --input-bg:#ffffff;
-  --scheme:light;
+  --input-bg:#ffffff;--scheme:light;
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;-webkit-text-size-adjust:100%}
 body{background:var(--bg);color:var(--text);font-family:-apple-system,system-ui,"Segoe UI",sans-serif;padding:0;font-size:14px;line-height:1.45;transition:background-color .25s,color .25s;color-scheme:var(--scheme);-webkit-tap-highlight-color:transparent}
 .wrap{padding:14px;max-width:900px;margin:0 auto}
-
 .header{position:relative;padding:16px 14px 14px;background:var(--header-bg);border-bottom:2px solid var(--accent-dim);overflow:hidden;transition:background .25s;padding-top:calc(16px + env(safe-area-inset-top))}
 .header::before{content:"";position:absolute;top:0;right:0;width:120px;height:100%;background:var(--header-stripe);opacity:var(--header-stripe-op);pointer-events:none;transition:opacity .25s}
 .header-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;position:relative}
@@ -76,7 +45,6 @@ body{background:var(--bg);color:var(--text);font-family:-apple-system,system-ui,
 .theme-toggle{flex-shrink:0;width:42px;height:42px;border-radius:50%;padding:0;margin:0;font-size:18px;line-height:1;display:flex;align-items:center;justify-content:center;background:var(--bg-2);border:1px solid var(--border-2);color:var(--text);cursor:pointer;transition:transform .2s,background .2s,color .2s,border-color .2s;position:relative;z-index:2;touch-action:manipulation}
 .theme-toggle:hover{background:var(--accent);color:#fff;border-color:var(--accent);transform:rotate(15deg)}
 .theme-toggle:active{transform:scale(.92) rotate(15deg)}
-
 h3{font-size:11px;color:var(--accent);margin:18px 0 8px;text-transform:uppercase;letter-spacing:1.2px;font-weight:700}
 h3.warn{color:var(--danger)}
 label{display:block;margin-top:10px;font-size:11px;color:var(--text-mut);text-transform:uppercase;letter-spacing:.5px}
@@ -91,7 +59,6 @@ button.primary:hover{background:var(--accent-2);border-color:var(--accent-2);box
 button.dang{background:transparent;color:var(--danger);border-color:var(--danger-dim)}
 button.dang:hover{background:var(--danger);color:#fff;border-color:var(--danger)}
 button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-width:38px;min-height:38px;display:inline-flex;align-items:center;justify-content:center}
-
 .tabs{display:flex;gap:4px;margin:0;background:var(--bg-2);padding:4px;border-bottom:1px solid var(--border);transition:background .25s,border-color .25s;position:sticky;top:0;z-index:5;padding-top:calc(4px + env(safe-area-inset-top))}
 .tab{flex:1;padding:12px 8px;text-align:center;background:transparent;border:0;border-radius:6px;cursor:pointer;font-size:12px;color:var(--text-mut);font-family:inherit;font-weight:700;letter-spacing:1px;text-transform:uppercase;transition:color .15s,background .15s;touch-action:manipulation}
 .tab:hover{color:var(--text)}
@@ -117,46 +84,47 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
 .toast.show{opacity:1}
 .toast.err{background:var(--danger);color:#fff;box-shadow:var(--shadow-toast-err)}
 .note{font-size:11px;color:var(--text-dim);margin-top:6px}
-
 .credits{margin-top:30px;padding:16px;border-top:1px solid var(--border);color:var(--text-dim);font-size:11px;line-height:1.8;transition:color .25s,border-color .25s;display:flex;flex-direction:column;gap:16px}
 .credits b{color:var(--accent);letter-spacing:1px;text-transform:uppercase;font-size:10px;display:block;margin-bottom:2px}
 .credits .k{color:var(--text-mut);font-family:monospace}
 .credits .about p{margin:6px 0 0;color:var(--text-mut);font-size:11px;line-height:1.7}
-.credits .about p .k{color:var(--text-mut);font-family:monospace}
 .credits .credit-block{line-height:1.9}
-
 .row-btns{display:grid;grid-template-columns:1fr 1fr;gap:6px}
 .row-btns button{margin-top:0;width:100%}
 .paste-row{display:flex;gap:6px;margin-top:4px;align-items:flex-start}
 .paste-row textarea{flex:1;margin-top:0}
 .paste-row button{flex-shrink:0;margin-top:0;padding:9px 11px;font-size:11px;height:auto;min-height:44px;min-width:60px;align-self:stretch}
 .divider{height:1px;background:var(--border);margin:14px 0;transition:background .25s}
-
+.globals{background:var(--bg-2);border:1px solid var(--border);border-radius:8px;padding:11px;margin-top:8px}
+.g-sub{font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;margin:10px 0 4px;font-weight:700}
+.g-sub:first-child{margin-top:2px}
+.g-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.g-row-3{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.gren-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-top:6px}
+.gren-row{display:flex;align-items:center;gap:8px;background:var(--bg-3);padding:6px 8px;border-radius:6px;border:1px solid var(--border)}
+.gren-row input[type=checkbox]{width:auto;margin:0;padding:0;height:16px;width:16px;flex-shrink:0}
+.gren-row span{font-size:12px;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gren-row input[type=number]{width:60px;margin:0;padding:5px 6px;font-size:12px;text-align:center}
 @media(max-width:640px){
-  body{font-size:14px}
-  .wrap{padding:12px}
+  body{font-size:14px}.wrap{padding:12px}
   .header{padding:14px 12px 12px;padding-top:calc(14px + env(safe-area-inset-top))}
-  .header h1{font-size:18px}
-  .header .sub{font-size:10px;letter-spacing:1.2px}
+  .header h1{font-size:18px}.header .sub{font-size:10px;letter-spacing:1.2px}
   .theme-toggle{width:40px;height:40px;font-size:17px}
   input,select,textarea{font-size:16px;padding:11px}
-  .ch-code{font-size:12px}
-  .paste-row textarea{font-size:14px}
+  .ch-code{font-size:12px}.paste-row textarea{font-size:14px}
   .tab{padding:13px 8px;font-size:12px}
   button{padding:12px 14px;font-size:14px}
   button.sm{padding:8px 11px;font-size:13px;min-width:44px;min-height:44px}
   .slot-badge{width:32px;height:32px;font-size:14px}
-  .ch-name{font-size:15px;padding:4px 0}
-  .ch-info{font-size:12px}
-  .card{padding:12px}
-  .row-btns{grid-template-columns:1fr;gap:8px}
-  .paste-row{flex-direction:column}
-  .paste-row button{align-self:stretch;min-height:44px}
+  .ch-name{font-size:15px;padding:4px 0}.ch-info{font-size:12px}
+  .card{padding:12px}.row-btns{grid-template-columns:1fr;gap:8px}
+  .paste-row{flex-direction:column}.paste-row button{align-self:stretch;min-height:44px}
   .credits{font-size:11px;padding:14px}
+  .g-row,.g-row-3{grid-template-columns:1fr}
+  .gren-grid{grid-template-columns:1fr}
 }
 @media(max-width:380px){
-  .header h1{font-size:16px}
-  .header .sub{display:none}
+  .header h1{font-size:16px}.header .sub{display:none}
   .tab{font-size:11px;letter-spacing:.5px;padding:12px 6px}
   button.sm{min-width:40px;padding:7px 9px}
 }
@@ -200,6 +168,66 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
 <div id="tab-prof" class="hidden">
   <label>Profile name (latin letters, digits, _ and - only)</label>
   <input id="p-name" value="My profile" autocomplete="off" spellcheck="false">
+
+  <h3>Global settings</h3>
+  <div class="globals">
+
+    <div class="g-sub">Sniper scope</div>
+    <div class="g-row">
+      <div>
+        <label>Sniper width (0–5)</label>
+        <input id="g-sniper" type="number" min="0" max="5" value="1">
+      </div>
+      <div>
+        <label>Show inaccuracy</label>
+        <select id="g-sniper-inacc"><option value="1">Yes</option><option value="0">No</option></select>
+      </div>
+    </div>
+    <div class="g-row">
+      <div>
+        <label>Delay unscope after shot</label>
+        <select id="g-sniper-delay"><option value="1">Yes</option><option value="0">No</option></select>
+      </div>
+      <div>
+        <label>Auto rezoom after shot</label>
+        <select id="g-sniper-rezoom"><option value="1">Yes</option><option value="0">No</option></select>
+      </div>
+    </div>
+
+    <div class="g-sub">Grenade crosshairs</div>
+    <div>
+      <label>Keep user crosshair when holding grenade</label>
+      <select id="g-keep"><option value="1">Yes</option><option value="0">No</option></select>
+    </div>
+    <div class="gren-grid">
+      <div class="gren-row">
+        <input type="checkbox" id="g-flash">
+        <span>Flash</span>
+        <input type="number" id="g-delay-flash" min="0" max="5" step="0.1" value="2">
+      </div>
+      <div class="gren-row">
+        <input type="checkbox" id="g-explosive">
+        <span>Explosive</span>
+        <input type="number" id="g-delay-explosive" min="0" max="5" step="0.1" value="2">
+      </div>
+      <div class="gren-row">
+        <input type="checkbox" id="g-fire">
+        <span>Fire</span>
+        <input type="number" id="g-delay-fire" min="0" max="5" step="0.1" value="2">
+      </div>
+      <div class="gren-row">
+        <input type="checkbox" id="g-smoke">
+        <span>Smoke</span>
+        <input type="number" id="g-delay-smoke" min="0" max="5" step="0.1" value="2">
+      </div>
+      <div class="gren-row">
+        <input type="checkbox" id="g-decoy">
+        <span>Decoy</span>
+        <input type="number" id="g-delay-decoy" min="0" max="5" step="0.1" value="2">
+      </div>
+    </div>
+    <div class="note">Delay numbers = <code>cl_grenadecrosshairdelay_*</code> in seconds.</div>
+  </div>
 
   <h3>Crosshairs · Numpad 1–9</h3>
   <div id="p-list"></div>
@@ -261,29 +289,25 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
 
   var THEME_KEY = 'cs2_v4ir_theme';
   var themeToggle = document.getElementById('theme-toggle');
-
   function applyTheme(theme) {
     if (theme === 'light') {
       document.documentElement.setAttribute('data-theme', 'light');
-      themeToggle.textContent = '☀️';
-      themeToggle.title = 'Switch to dark theme';
+      themeToggle.textContent = '☀️'; themeToggle.title = 'Switch to dark theme';
     } else {
       document.documentElement.removeAttribute('data-theme');
-      themeToggle.textContent = '🌙';
-      themeToggle.title = 'Switch to light theme';
+      themeToggle.textContent = '🌙'; themeToggle.title = 'Switch to light theme';
     }
   }
   function loadTheme() {
-    var saved;
-    try { saved = localStorage.getItem(THEME_KEY); } catch (e) {}
+    var saved; try { saved = localStorage.getItem(THEME_KEY); } catch (e) {}
     if (saved === 'light' || saved === 'dark') return saved;
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) return 'light';
     return 'dark';
   }
   applyTheme(loadTheme());
   themeToggle.addEventListener('click', function() {
-    var current = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
-    var next = current === 'light' ? 'dark' : 'light';
+    var cur = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+    var next = cur === 'light' ? 'dark' : 'light';
     applyTheme(next);
     try { localStorage.setItem(THEME_KEY, next); } catch (e) {}
   });
@@ -298,8 +322,7 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
     });
   }
   function toast(m, e) {
-    var t = $('toast');
-    t.textContent = m;
+    var t = $('toast'); t.textContent = m;
     t.className = 'toast show' + (e ? ' err' : '');
     setTimeout(function() { t.className = 'toast'; }, 2000);
   }
@@ -311,25 +334,22 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
     }, 60);
   }
   function num(v, fb) {
-    return (v === undefined || v === null || (typeof v === 'number' && isNaN(v))) ? fb : v;
+    if (v === undefined || v === null) return fb;
+    if (typeof v === 'number' && isNaN(v)) return fb;
+    var n = parseFloat(v);
+    return isNaN(n) ? fb : n;
   }
   function slug(s) {
-    return String(s || 'profile')
-      .toLowerCase()
-      .replace(/[^a-z0-9_\-]+/g, '_')
-      .replace(/^_+|_+$/g, '')
-      .substring(0, 40) || 'profile';
+    return String(s || 'profile').toLowerCase()
+      .replace(/[^a-z0-9_\-]+/g, '_').replace(/^_+|_+$/g, '').substring(0, 40) || 'profile';
   }
   function copyToClipboard(text, okMsg) {
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(function() {
-        toast(okMsg || 'Copied');
-      }, function() { toast('Copy failed', 1); });
+      navigator.clipboard.writeText(text).then(function() { toast(okMsg || 'Copied'); },
+        function() { toast('Copy failed', 1); });
     } else {
       var ta = document.createElement('textarea');
-      ta.value = text;
-      document.body.appendChild(ta);
-      ta.select();
+      ta.value = text; document.body.appendChild(ta); ta.select();
       try { document.execCommand('copy'); toast(okMsg || 'Copied'); }
       catch (e) { toast('Copy failed', 1); }
       document.body.removeChild(ta);
@@ -337,26 +357,14 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
   }
   function pasteFromClipboard(target) {
     if (navigator.clipboard && navigator.clipboard.readText) {
-      navigator.clipboard.readText().then(function(txt) {
-        target.value = txt;
-        toast('Pasted');
-      }, function() {
-        target.focus();
-        toast('Press Ctrl+V to paste', 1);
-      });
-    } else {
-      target.focus();
-      toast('Press Ctrl+V to paste', 1);
-    }
+      navigator.clipboard.readText().then(function(txt) { target.value = txt; toast('Pasted'); },
+        function() { target.focus(); toast('Press Ctrl+V to paste', 1); });
+    } else { target.focus(); toast('Press Ctrl+V to paste', 1); }
   }
-  function sanitizeName(s) {
-    return String(s || '').replace(/[^a-zA-Z0-9 _\-]/g, '');
-  }
+  function sanitizeName(s) { return String(s || '').replace(/[^a-zA-Z0-9 _\-]/g, ''); }
   function pickFile(accept, onLoad) {
     var inp = document.createElement('input');
-    inp.type = 'file';
-    inp.accept = accept;
-    inp.style.display = 'none';
+    inp.type = 'file'; inp.accept = accept; inp.style.display = 'none';
     document.body.appendChild(inp);
     inp.addEventListener('change', function() {
       var file = inp.files && inp.files[0];
@@ -367,10 +375,7 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
         catch (e) { toast('Read error: ' + e.message, 1); }
         document.body.removeChild(inp);
       };
-      reader.onerror = function() {
-        toast('Failed to read file', 1);
-        document.body.removeChild(inp);
-      };
+      reader.onerror = function() { toast('Failed to read file', 1); document.body.removeChild(inp); };
       reader.readAsText(file);
     });
     inp.click();
@@ -383,107 +388,209 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
   };
   var OM = { 0: 'No outline', 1: 'Full outline', 2: 'Half outline' };
 
-  var SK = 'cs2_v4ir_profile_v1';
-  var state = { name: 'My profile', crosshairs: {} };
+  var SK = 'cs2_v4ir_profile_v3';
+  var state = { name: 'My profile', crosshairs: {}, global: defaultGlobals() };
+
+  function defaultGlobals() {
+    return {
+      sniperWidth: 1,
+      sniperShowInaccuracy: true,
+      sniperDelayUnscope: false,
+      sniperAutoRezoom: true,
+      grenadeKeepUserCrosshair: true,
+      grenadeFlash: false,
+      grenadeExplosive: false,
+      grenadeFire: false,
+      grenadeSmoke: false,
+      grenadeDecoy: false,
+      grenadeDelayFlash: 2,
+      grenadeDelayExplosive: 2,
+      grenadeDelayFire: 2,
+      grenadeDelaySmoke: 2,
+      grenadeDelayDecoy: 2
+    };
+  }
+  function defaultCrosshair() {
+    return {
+      name: 'Crosshair',
+      style: 4,
+      length: 2, thickness: 1, gap: 0,
+      centerDotEnabled: false, tStyleEnabled: false, followRecoil: false,
+      red: 0, green: 255, blue: 0, alpha: 255,
+      outlineMode: 0,
+      outlineR: 0, outlineG: 0, outlineB: 0, outlineA: 255,
+      spreadLimit: 255,
+      ironsightUseCrosshairColor: true,
+      ironsightDotScale: 1,
+      splitDistance: 0, splitSizeRatio: 1,
+      innerSplitAlpha: 0, outerSplitAlpha: 1,
+      screenHeight: 1080
+    };
+  }
+  function migrateCrosshair(ch) {
+    var d = defaultCrosshair();
+    for (var k in d) {
+      if (ch[k] === undefined || ch[k] === null) ch[k] = d[k];
+    }
+    return ch;
+  }
 
   function loadState() {
-    try {
-      var r = localStorage.getItem(SK);
-      if (r) {
-        var p = JSON.parse(r);
+    // Try v3, then v2 (migrate), then v1
+    var raw = null;
+    try { raw = localStorage.getItem(SK); } catch (e) {}
+    if (!raw) {
+      try { raw = localStorage.getItem('cs2_v4ir_profile_v2'); } catch (e) {}
+    }
+    if (!raw) {
+      try { raw = localStorage.getItem('cs2_v4ir_profile_v1'); } catch (e) {}
+    }
+    if (raw) {
+      try {
+        var p = JSON.parse(raw);
         if (p && p.crosshairs) state = p;
-      }
-    } catch (e) { console.warn(e); }
+      } catch (e) { console.warn(e); }
+    }
+    if (!state.global) state.global = defaultGlobals();
+    var dg = defaultGlobals();
+    for (var gk in dg) if (state.global[gk] === undefined) state.global[gk] = dg[gk];
+    // Purge old field names if any
+    delete state.global.grenadeHE;
+    delete state.global.grenadeMolotov;
+    delete state.global.grenadeInc;
+    for (var slot in state.crosshairs) {
+      state.crosshairs[slot] = migrateCrosshair(state.crosshairs[slot]);
+    }
+    if (!state.name) state.name = 'My profile';
   }
   function saveState() {
     try { localStorage.setItem(SK, JSON.stringify(state)); } catch (e) { console.warn(e); }
   }
 
+  // ================== COMMAND GENERATION ==================
   function toCommands(d) {
     var style = num(d.style, 4);
     var om = num(d.outlineMode, 0);
     var outlineDraw = om > 0 ? 1 : 0;
-    var outlineThick = om === 2 ? 0.5 : (om === 1 ? 1 : 0);
     var length    = num(d.length, 2);
     var thickness = num(d.thickness, 1);
     var gap       = num(d.gap, 0);
 
     return [
       'cl_crosshairstyle ' + style,
-      'cl_crosshairsize ' + length,
       'cl_crosshair_length ' + length,
-      'cl_crosshairthickness ' + thickness,
       'cl_crosshair_thickness ' + thickness,
-      'cl_crosshairgap ' + gap,
       'cl_crosshair_gap ' + gap,
-      'cl_crosshairdot ' + (d.centerDotEnabled ? 1 : 0),
-      'cl_crosshair_t ' + (d.tStyleEnabled ? 1 : 0),
+      'cl_crosshairdot ' + (d.centerDotEnabled ? 'true' : 'false'),
+      'cl_crosshair_t ' + (d.tStyleEnabled ? 'true' : 'false'),
       'cl_crosshair_drawoutline ' + outlineDraw,
-      'cl_crosshair_outlinethickness ' + outlineThick,
-      'cl_crosshaircolor ' + num(d.color, 5),
       'cl_crosshaircolor_r ' + num(d.red, 0),
       'cl_crosshaircolor_g ' + num(d.green, 255),
       'cl_crosshaircolor_b ' + num(d.blue, 0),
-      'cl_crosshairalpha ' + num(d.alpha, 255),
-      'cl_crosshairusealpha ' + (d.alphaEnabled !== false ? 1 : 0),
-      'cl_crosshair_recoil ' + (d.followRecoil ? 1 : 0),
-      'cl_crosshairgap_useweaponvalue ' + (d.deployedWeaponGapEnabled ? 1 : 0),
-      'cl_fixedcrosshairgap 3',
+      'cl_crosshaircolor_a ' + num(d.alpha, 255),
+      'cl_crosshairoutline_r ' + num(d.outlineR, 0),
+      'cl_crosshairoutline_g ' + num(d.outlineG, 0),
+      'cl_crosshairoutline_b ' + num(d.outlineB, 0),
+      'cl_crosshairoutline_a ' + num(d.outlineA, 255),
+      'cl_crosshair_recoil ' + (d.followRecoil ? 'true' : 'false'),
       'cl_crosshair_dynamic_splitdist ' + num(d.splitDistance, 0),
       'cl_crosshair_dynamic_maxdist_splitratio ' + num(d.splitSizeRatio, 1),
       'cl_crosshair_dynamic_splitalpha_innermod ' + num(d.innerSplitAlpha, 0),
-      'cl_crosshair_dynamic_splitalpha_outermod ' + num(d.outerSplitAlpha, 1)
+      'cl_crosshair_dynamic_splitalpha_outermod ' + num(d.outerSplitAlpha, 1),
+      'cl_crosshair_dynamic_spread_limit ' + num(d.spreadLimit, 255),
+      'cl_ironsight_usecrosshaircolor ' + (d.ironsightUseCrosshairColor !== false ? 'true' : 'false'),
+      'cl_ironsight_dot_scale ' + num(d.ironsightDotScale, 1).toFixed(2)
     ];
   }
+
+  function globalCommands() {
+    var g = state.global || defaultGlobals();
+    return [
+      'cl_crosshair_sniper_width ' + num(g.sniperWidth, 1),
+      'cl_sniper_show_inaccuracy ' + (g.sniperShowInaccuracy ? 'true' : 'false'),
+      'cl_sniper_delay_unscope ' + (g.sniperDelayUnscope ? 'true' : 'false'),
+      'cl_sniper_auto_rezoom ' + (g.sniperAutoRezoom ? 'true' : 'false'),
+      'cl_grenadecrosshair_keepusercrosshair ' + (g.grenadeKeepUserCrosshair ? 'true' : 'false'),
+      'cl_grenadecrosshair_flash ' + (g.grenadeFlash ? 'true' : 'false'),
+      'cl_grenadecrosshair_explosive ' + (g.grenadeExplosive ? 'true' : 'false'),
+      'cl_grenadecrosshair_fire ' + (g.grenadeFire ? 'true' : 'false'),
+      'cl_grenadecrosshair_smoke ' + (g.grenadeSmoke ? 'true' : 'false'),
+      'cl_grenadecrosshair_decoy ' + (g.grenadeDecoy ? 'true' : 'false'),
+      'cl_grenadecrosshairdelay_flash ' + num(g.grenadeDelayFlash, 2),
+      'cl_grenadecrosshairdelay_explosive ' + num(g.grenadeDelayExplosive, 2),
+      'cl_grenadecrosshairdelay_fire ' + num(g.grenadeDelayFire, 2),
+      'cl_grenadecrosshairdelay_smoke ' + num(g.grenadeDelaySmoke, 2),
+      'cl_grenadecrosshairdelay_decoy ' + num(g.grenadeDelayDecoy, 2)
+    ];
+  }
+
   function formatCommands(cmds) {
     return cmds.map(function(c) { return c + ';'; }).join('\n');
   }
+
+  // ================== DECODE / ENCODE ==================
   function decodeToCh(d) {
-    return {
-      name: 'Import ' + new Date().toLocaleTimeString('en-US', {hour:'2-digit',minute:'2-digit'}),
-      style: d.style, color: num(d.color, 5),
-      length: num(d.length, 2), thickness: num(d.thickness, 1), gap: num(d.gap, 0),
-      centerDotEnabled: !!d.centerDotEnabled,
-      tStyleEnabled: !!d.tStyleEnabled,
-      followRecoil: !!d.followRecoil,
-      red: num(d.red, 0), green: num(d.green, 255), blue: num(d.blue, 0), alpha: num(d.alpha, 255),
-      alphaEnabled: d.alphaEnabled !== false,
-      deployedWeaponGapEnabled: !!d.deployedWeaponGapEnabled,
-      outlineMode: num(d.outlineMode, 0), outline: num(d.outline, 0),
-      splitDistance: num(d.splitDistance, 0), splitSizeRatio: num(d.splitSizeRatio, 1),
-      innerSplitAlpha: num(d.innerSplitAlpha, 0), outerSplitAlpha: num(d.outerSplitAlpha, 1),
-      screenHeight: num(d.screenHeight, 1080)
-    };
+    var ch = defaultCrosshair();
+    ch.name = 'Import ' + new Date().toLocaleTimeString('en-US', {hour:'2-digit',minute:'2-digit'});
+    ch.style   = num(d.style, ch.style);
+    ch.length  = num(d.length, ch.length);
+    ch.thickness = num(d.thickness, ch.thickness);
+    ch.gap     = num(d.gap, ch.gap);
+    ch.centerDotEnabled = !!d.centerDotEnabled;
+    ch.tStyleEnabled    = !!d.tStyleEnabled;
+    ch.followRecoil     = !!d.followRecoil;
+    ch.red   = num(d.red, ch.red);
+    ch.green = num(d.green, ch.green);
+    ch.blue  = num(d.blue, ch.blue);
+    ch.alpha = num(d.alpha, ch.alpha);
+    ch.outlineMode = num(d.outlineMode, 0);
+    ch.outlineR = num(d.outlineR, ch.outlineR);
+    ch.outlineG = num(d.outlineG, ch.outlineG);
+    ch.outlineB = num(d.outlineB, ch.outlineB);
+    ch.outlineA = num(d.outlineA, ch.outlineA);
+    ch.spreadLimit = num(d.spreadLimit, ch.spreadLimit);
+    ch.ironsightUseCrosshairColor = d.ironsightUseCrosshairColor !== undefined
+      ? !!d.ironsightUseCrosshairColor : ch.ironsightUseCrosshairColor;
+    ch.ironsightDotScale = num(d.ironsightDotScale, ch.ironsightDotScale);
+    ch.splitDistance = num(d.splitDistance, ch.splitDistance);
+    ch.splitSizeRatio = num(d.splitSizeRatio, ch.splitSizeRatio);
+    ch.innerSplitAlpha = num(d.innerSplitAlpha, ch.innerSplitAlpha);
+    ch.outerSplitAlpha = num(d.outerSplitAlpha, ch.outerSplitAlpha);
+    ch.screenHeight = num(d.screenHeight, ch.screenHeight);
+    return ch;
   }
+
   function encodeToShareCode(ch) {
     if (!lib || !lib.encodeCrosshair) return null;
     try {
       return lib.encodeCrosshair({
-        version: 4, style: ch.style, color: ch.color,
-        length: ch.length, thickness: ch.thickness, gap: ch.gap,
+        version: 4,
+        style: ch.style,
+        length: ch.length,
+        thickness: ch.thickness,
+        gap: ch.gap,
         centerDotEnabled: ch.centerDotEnabled,
         tStyleEnabled: ch.tStyleEnabled,
         followRecoil: ch.followRecoil,
         red: ch.red, green: ch.green, blue: ch.blue, alpha: ch.alpha,
-        alphaEnabled: ch.alphaEnabled,
-        deployedWeaponGapEnabled: ch.deployedWeaponGapEnabled,
-        outlineMode: ch.outlineMode, outline: ch.outline,
-        splitDistance: ch.splitDistance, splitSizeRatio: ch.splitSizeRatio,
-        innerSplitAlpha: ch.innerSplitAlpha, outerSplitAlpha: ch.outerSplitAlpha,
+        outlineMode: ch.outlineMode,
+        splitDistance: ch.splitDistance,
+        splitSizeRatio: ch.splitSizeRatio,
+        innerSplitAlpha: ch.innerSplitAlpha,
+        outerSplitAlpha: ch.outerSplitAlpha,
         screenHeight: ch.screenHeight
       });
     } catch (e) { console.warn('encode failed', e); return null; }
   }
+
   function addCodeToProfile(code) {
     if (!lib) { toast('Decoder not loaded', 1); return; }
     var d;
     try { d = lib.decodeCrosshairShareCode(code); }
     catch (e) { toast('Decode error: ' + e.message, 1); return; }
-
     var used = Object.keys(state.crosshairs).map(Number);
     var free = [];
     for (var i = 1; i <= 9; i++) if (used.indexOf(i) === -1) free.push(i);
-
     var slot;
     if (free.length > 0) {
       slot = free[0];
@@ -500,6 +607,7 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
     scrollIntoViewSoft($('p-list').lastElementChild);
   }
 
+  // ================== DECODER UI ==================
   function renderDecodeOutput(codes) {
     var out = $('dec-out');
     var parts = [];
@@ -510,8 +618,7 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
         var cmds = toCommands(d);
         var styleName = STY[d.style] || ('style ' + d.style);
         var omName = (d.outlineMode === undefined || d.outlineMode === null)
-          ? 'unknown'
-          : (OM[d.outlineMode] || ('outline ' + d.outlineMode));
+          ? 'unknown' : (OM[d.outlineMode] || ('outline ' + d.outlineMode));
         var ver = (d.outlineMode === undefined || d.outlineMode === null) ? 'V3' : 'V4';
         var html = '<div class="res">';
         html += '<div class="code">' + esc(c) + '</div>';
@@ -556,8 +663,27 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
     renderDecodeOutput(codes);
   });
 
+  // ================== PROFILE UI ==================
   function renderProf() {
     $('p-name').value = state.name;
+
+    var g = state.global || defaultGlobals();
+    $('g-sniper').value = num(g.sniperWidth, 1);
+    $('g-sniper-inacc').value = g.sniperShowInaccuracy ? '1' : '0';
+    $('g-sniper-delay').value = g.sniperDelayUnscope ? '1' : '0';
+    $('g-sniper-rezoom').value = g.sniperAutoRezoom ? '1' : '0';
+    $('g-keep').value = g.grenadeKeepUserCrosshair ? '1' : '0';
+    $('g-flash').checked = !!g.grenadeFlash;
+    $('g-explosive').checked = !!g.grenadeExplosive;
+    $('g-fire').checked = !!g.grenadeFire;
+    $('g-smoke').checked = !!g.grenadeSmoke;
+    $('g-decoy').checked = !!g.grenadeDecoy;
+    $('g-delay-flash').value = num(g.grenadeDelayFlash, 2);
+    $('g-delay-explosive').value = num(g.grenadeDelayExplosive, 2);
+    $('g-delay-fire').value = num(g.grenadeDelayFire, 2);
+    $('g-delay-smoke').value = num(g.grenadeDelaySmoke, 2);
+    $('g-delay-decoy').value = num(g.grenadeDelayDecoy, 2);
+
     var list = $('p-list');
     list.innerHTML = '';
     var has = false;
@@ -641,6 +767,46 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
     });
   }
 
+  // ---- Global settings handlers ----
+  function bindGlobals() {
+    function bindNum(id, key, min, max) {
+      $(id).addEventListener('input', function(e) {
+        var v = parseFloat(e.target.value);
+        if (isNaN(v)) v = min;
+        if (v < min) v = min; if (v > max) v = max;
+        state.global[key] = v;
+        saveState();
+      });
+    }
+    function bindBool(id, key) {
+      $(id).addEventListener('change', function(e) {
+        state.global[key] = e.target.value === '1';
+        saveState();
+      });
+    }
+    function bindCheck(id, key) {
+      $(id).addEventListener('change', function(e) {
+        state.global[key] = e.target.checked;
+        saveState();
+      });
+    }
+    bindNum('g-sniper', 'sniperWidth', 0, 5);
+    bindBool('g-sniper-inacc', 'sniperShowInaccuracy');
+    bindBool('g-sniper-delay', 'sniperDelayUnscope');
+    bindBool('g-sniper-rezoom', 'sniperAutoRezoom');
+    bindBool('g-keep', 'grenadeKeepUserCrosshair');
+    bindCheck('g-flash', 'grenadeFlash');
+    bindCheck('g-explosive', 'grenadeExplosive');
+    bindCheck('g-fire', 'grenadeFire');
+    bindCheck('g-smoke', 'grenadeSmoke');
+    bindCheck('g-decoy', 'grenadeDecoy');
+    bindNum('g-delay-flash', 'grenadeDelayFlash', 0, 5);
+    bindNum('g-delay-explosive', 'grenadeDelayExplosive', 0, 5);
+    bindNum('g-delay-fire', 'grenadeDelayFire', 0, 5);
+    bindNum('g-delay-smoke', 'grenadeDelaySmoke', 0, 5);
+    bindNum('g-delay-decoy', 'grenadeDelayDecoy', 0, 5);
+  }
+
   $('p-name').addEventListener('input', function(e) {
     var cleaned = sanitizeName(e.target.value);
     if (cleaned !== e.target.value) e.target.value = cleaned;
@@ -676,21 +842,8 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
     toast('Profile restored');
   });
 
-  function buildCmds(ch) {
-    return toCommands({
-      style: ch.style, color: ch.color,
-      length: ch.length, thickness: ch.thickness, gap: ch.gap,
-      centerDotEnabled: ch.centerDotEnabled,
-      tStyleEnabled: ch.tStyleEnabled,
-      followRecoil: ch.followRecoil,
-      red: ch.red, green: ch.green, blue: ch.blue, alpha: ch.alpha,
-      alphaEnabled: ch.alphaEnabled,
-      deployedWeaponGapEnabled: ch.deployedWeaponGapEnabled,
-      outlineMode: ch.outlineMode,
-      splitDistance: ch.splitDistance, splitSizeRatio: ch.splitSizeRatio,
-      innerSplitAlpha: ch.innerSplitAlpha, outerSplitAlpha: ch.outerSplitAlpha
-    });
-  }
+  // ================== CFG EXPORT ==================
+  function buildCmds(ch) { return toCommands(ch); }
   function splitChunks(cmds, max) {
     var out = [], c = '';
     for (var i = 0; i < cmds.length; i++) {
@@ -704,7 +857,6 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
   }
   function genCFG() {
     var slots = Object.keys(state.crosshairs).map(Number).sort(function(a,b){ return a-b; });
-    if (!slots.length) return '// Profile is empty';
     var L = [];
     L.push('// ============================================');
     L.push('// CS2 V4ir profile: ' + state.name);
@@ -712,6 +864,13 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
     L.push('// Slots: ' + slots.length);
     L.push('// ============================================');
     L.push('');
+    L.push('// --- Global settings ---');
+    globalCommands().forEach(function(c) { L.push(c); });
+    L.push('');
+    if (!slots.length) {
+      L.push('// No crosshairs in profile');
+      return L.join('\n');
+    }
     slots.forEach(function(bind, i) {
       var ch = state.crosshairs[bind];
       var chunks = splitChunks(buildCmds(ch), 200);
@@ -744,9 +903,7 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
       el.innerHTML = '<pre>' + esc(genCFG()) + '</pre>';
       el.classList.remove('hidden');
       scrollIntoViewSoft(el);
-    } else {
-      el.classList.add('hidden');
-    }
+    } else { el.classList.add('hidden'); }
   });
 
   $('btn-export-codes').addEventListener('click', function() {
@@ -777,25 +934,32 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
     scrollIntoViewSoft(el);
   });
 
+  // ================== CFG IMPORT ==================
   function parseV4irCfg(text) {
-    var aliases = {};
-    var binds = {};
+    var aliases = {}, binds = {};
     var lines = text.split('\n');
+    var globalCmds = [];
+    var inGlobal = false;
     for (var i = 0; i < lines.length; i++) {
       var line = lines[i];
       var cut = line.indexOf('//');
-      if (cut >= 0) line = line.substring(0, cut);
-      line = line.trim();
-      if (!line) continue;
-      var mAlias = line.match(/^alias\s+"([^"]+)"\s+"([^"]*)"/i);
+      var codePart = cut >= 0 ? line.substring(0, cut).trim() : line.trim();
+      var commentPart = cut >= 0 ? line.substring(cut) : '';
+      if (/Global settings/i.test(commentPart)) { inGlobal = true; continue; }
+      if (/Numpad\s+\d/i.test(commentPart)) { inGlobal = false; }
+      if (!codePart) continue;
+      var mAlias = codePart.match(/^alias\s+"([^"]+)"\s+"([^"]*)"/i);
       if (mAlias) {
         aliases[mAlias[1]] = mAlias[2].split(';').map(function(s){return s.trim();}).filter(Boolean);
         continue;
       }
-      var mBind = line.match(/^bind\s+kp_?(\d)\s+"([^"]*)"/i);
+      var mBind = codePart.match(/^bind\s+kp_?(\d)\s+"([^"]*)"/i);
       if (mBind) {
         binds[parseInt(mBind[1], 10)] = mBind[2].split(';').map(function(s){return s.trim();}).filter(Boolean);
         continue;
+      }
+      if (inGlobal && codePart.indexOf(' ') > 0) {
+        globalCmds.push(codePart);
       }
     }
     var nameMatch = text.match(/\/\/\s*CS2 V4ir profile:\s*(.+)/i)
@@ -808,7 +972,12 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
     while ((m = nameRe.exec(text)) !== null) {
       slotNames[parseInt(m[1], 10)] = m[2].trim();
     }
-    var result = { name: profileName, crosshairs: {} };
+    var result = {
+      name: profileName,
+      crosshairs: {},
+      global: defaultGlobals()
+    };
+    applyGlobalCommands(result.global, globalCmds);
     for (var slot in binds) {
       if (!binds.hasOwnProperty(slot)) continue;
       var chain = binds[slot];
@@ -823,20 +992,42 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
     }
     return result;
   }
+
+  function applyGlobalCommands(g, cmds) {
+    for (var i = 0; i < cmds.length; i++) {
+      var parts = cmds[i].trim().split(/\s+/);
+      if (parts.length < 2) continue;
+      var key = parts[0].toLowerCase();
+      var val = parts.slice(1).join(' ');
+      var nv = parseFloat(val);
+      var bv = (val === '1' || val === 'true');
+      switch (key) {
+        case 'cl_crosshair_sniper_width': g.sniperWidth = isNaN(nv) ? g.sniperWidth : nv; break;
+        case 'cl_sniper_show_inaccuracy': g.sniperShowInaccuracy = bv; break;
+        case 'cl_sniper_delay_unscope': g.sniperDelayUnscope = bv; break;
+        case 'cl_sniper_auto_rezoom': g.sniperAutoRezoom = bv; break;
+        case 'cl_grenadecrosshair_keepusercrosshair': g.grenadeKeepUserCrosshair = bv; break;
+        case 'cl_grenadecrosshair_flash': g.grenadeFlash = bv; break;
+        case 'cl_grenadecrosshair_explosive':
+        case 'cl_grenadecrosshair_he': g.grenadeExplosive = bv; break;
+        case 'cl_grenadecrosshair_fire':
+        case 'cl_grenadecrosshair_molotov': g.grenadeFire = bv; break;
+        case 'cl_grenadecrosshair_smoke': g.grenadeSmoke = bv; break;
+        case 'cl_grenadecrosshair_decoy': g.grenadeDecoy = bv; break;
+        case 'cl_grenadecrosshair_incgrenade': g.grenadeFire = bv; break; // legacy alias
+        case 'cl_grenadecrosshairdelay_flash': g.grenadeDelayFlash = isNaN(nv) ? g.grenadeDelayFlash : nv; break;
+        case 'cl_grenadecrosshairdelay_explosive': g.grenadeDelayExplosive = isNaN(nv) ? g.grenadeDelayExplosive : nv; break;
+        case 'cl_grenadecrosshairdelay_fire': g.grenadeDelayFire = isNaN(nv) ? g.grenadeDelayFire : nv; break;
+        case 'cl_grenadecrosshairdelay_smoke': g.grenadeDelaySmoke = isNaN(nv) ? g.grenadeDelaySmoke : nv; break;
+        case 'cl_grenadecrosshairdelay_decoy': g.grenadeDelayDecoy = isNaN(nv) ? g.grenadeDelayDecoy : nv; break;
+      }
+    }
+  }
+
   function cmdsToCrosshair(cmds) {
-    var ch = {
-      name: 'Imported',
-      style: 4, color: 5,
-      length: 2, thickness: 1, gap: 0,
-      centerDotEnabled: false, tStyleEnabled: false, followRecoil: false,
-      red: 0, green: 255, blue: 0, alpha: 255,
-      alphaEnabled: true, deployedWeaponGapEnabled: false,
-      outlineMode: 0, outline: 0,
-      splitDistance: 0, splitSizeRatio: 1,
-      innerSplitAlpha: 0, outerSplitAlpha: 1,
-      screenHeight: 1080,
-      _drawoutline: 0, _outlineThick: 1
-    };
+    var ch = defaultCrosshair();
+    ch.name = 'Imported';
+    var _outlineDraw = 0;
     for (var i = 0; i < cmds.length; i++) {
       var parts = cmds[i].trim().split(/\s+/);
       if (parts.length < 2) continue;
@@ -846,38 +1037,40 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
       var iv = parseInt(val, 10);
       var bv = (val === '1' || val === 'true');
       switch (key) {
-        case 'cl_crosshairstyle': ch.style = iv; break;
+        case 'cl_crosshairstyle': ch.style = isNaN(iv) ? ch.style : iv; break;
         case 'cl_crosshairsize':
-        case 'cl_crosshair_length': ch.length = nv; break;
+        case 'cl_crosshair_length': ch.length = isNaN(nv) ? ch.length : nv; break;
         case 'cl_crosshairthickness':
-        case 'cl_crosshair_thickness': ch.thickness = nv; break;
+        case 'cl_crosshair_thickness': ch.thickness = isNaN(nv) ? ch.thickness : nv; break;
         case 'cl_crosshairgap':
-        case 'cl_crosshair_gap': ch.gap = nv; break;
+        case 'cl_crosshair_gap': ch.gap = isNaN(nv) ? ch.gap : nv; break;
         case 'cl_crosshairdot': ch.centerDotEnabled = bv; break;
         case 'cl_crosshair_t': ch.tStyleEnabled = bv; break;
-        case 'cl_crosshair_drawoutline': ch._drawoutline = iv; break;
-        case 'cl_crosshair_outlinethickness': ch._outlineThick = nv; break;
-        case 'cl_crosshaircolor': ch.color = iv; break;
-        case 'cl_crosshaircolor_r': ch.red = iv; break;
-        case 'cl_crosshaircolor_g': ch.green = iv; break;
-        case 'cl_crosshaircolor_b': ch.blue = iv; break;
-        case 'cl_crosshairalpha': ch.alpha = iv; break;
-        case 'cl_crosshairusealpha': ch.alphaEnabled = bv; break;
+        case 'cl_crosshair_drawoutline': _outlineDraw = isNaN(iv) ? 0 : iv; break;
+        case 'cl_crosshaircolor': /* legacy preset, ignore */ break;
+        case 'cl_crosshaircolor_r': ch.red = isNaN(iv) ? ch.red : iv; break;
+        case 'cl_crosshaircolor_g': ch.green = isNaN(iv) ? ch.green : iv; break;
+        case 'cl_crosshaircolor_b': ch.blue = isNaN(iv) ? ch.blue : iv; break;
+        case 'cl_crosshairalpha':
+        case 'cl_crosshaircolor_a': ch.alpha = isNaN(iv) ? ch.alpha : iv; break;
+        case 'cl_crosshairoutline_r': ch.outlineR = isNaN(iv) ? ch.outlineR : iv; break;
+        case 'cl_crosshairoutline_g': ch.outlineG = isNaN(iv) ? ch.outlineG : iv; break;
+        case 'cl_crosshairoutline_b': ch.outlineB = isNaN(iv) ? ch.outlineB : iv; break;
+        case 'cl_crosshairoutline_a': ch.outlineA = isNaN(iv) ? ch.outlineA : iv; break;
         case 'cl_crosshair_recoil': ch.followRecoil = bv; break;
-        case 'cl_crosshairgap_useweaponvalue': ch.deployedWeaponGapEnabled = bv; break;
-        case 'cl_crosshair_dynamic_splitdist': ch.splitDistance = nv; break;
-        case 'cl_crosshair_dynamic_maxdist_splitratio': ch.splitSizeRatio = nv; break;
-        case 'cl_crosshair_dynamic_splitalpha_innermod': ch.innerSplitAlpha = nv; break;
-        case 'cl_crosshair_dynamic_splitalpha_outermod': ch.outerSplitAlpha = nv; break;
+        case 'cl_crosshair_dynamic_splitdist': ch.splitDistance = isNaN(nv) ? ch.splitDistance : nv; break;
+        case 'cl_crosshair_dynamic_maxdist_splitratio': ch.splitSizeRatio = isNaN(nv) ? ch.splitSizeRatio : nv; break;
+        case 'cl_crosshair_dynamic_splitalpha_innermod': ch.innerSplitAlpha = isNaN(nv) ? ch.innerSplitAlpha : nv; break;
+        case 'cl_crosshair_dynamic_splitalpha_outermod': ch.outerSplitAlpha = isNaN(nv) ? ch.outerSplitAlpha : nv; break;
+        case 'cl_crosshair_dynamic_spread_limit': ch.spreadLimit = isNaN(nv) ? ch.spreadLimit : nv; break;
+        case 'cl_ironsight_usecrosshaircolor': ch.ironsightUseCrosshairColor = bv; break;
+        case 'cl_ironsight_dot_scale': ch.ironsightDotScale = isNaN(nv) ? ch.ironsightDotScale : nv; break;
       }
     }
-    if (ch._drawoutline === 0) ch.outlineMode = 0;
-    else if (ch._outlineThick === 0.5) ch.outlineMode = 2;
-    else ch.outlineMode = 1;
-    delete ch._drawoutline;
-    delete ch._outlineThick;
+    ch.outlineMode = _outlineDraw ? 1 : 0;
     return ch;
   }
+
   function applyImportedProfile(parsed, label) {
     var slots = Object.keys(parsed.crosshairs);
     if (!slots.length) { toast('No crosshairs found', 1); return; }
@@ -885,6 +1078,15 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
     lastCleared = JSON.parse(JSON.stringify(state));
     $('btn-restore').classList.remove('hidden');
     state = parsed;
+    if (!state.global) state.global = defaultGlobals();
+    var dg = defaultGlobals();
+    for (var gk in dg) if (state.global[gk] === undefined) state.global[gk] = dg[gk];
+    delete state.global.grenadeHE;
+    delete state.global.grenadeMolotov;
+    delete state.global.grenadeInc;
+    for (var slot in state.crosshairs) {
+      state.crosshairs[slot] = migrateCrosshair(state.crosshairs[slot]);
+    }
     saveState();
     renderProf();
     $('p-prev').classList.add('hidden');
@@ -898,7 +1100,7 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
       '<div class="note" style="margin-bottom:6px">Paste JSON and press "Load":</div>' +
       '<div class="paste-row">' +
         '<textarea id="json-import" rows="12" style="font-size:12px;font-family:monospace"></textarea>' +
-        '<button id="json-paste" class="sm primary" title="Paste from clipboard">📋 Paste</button>' +
+        '<button id="json-paste" class="sm primary">📋 Paste</button>' +
       '</div>' +
       '<button id="json-load" class="sm primary" style="margin-top:6px">Load</button>';
     $('json-paste').addEventListener('click', function() { pasteFromClipboard($('json-import')); });
@@ -935,7 +1137,7 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
       '<div class="note" style="margin-bottom:6px">Paste V4ir-generated .cfg and press "Load":</div>' +
       '<div class="paste-row">' +
         '<textarea id="cfg-import" rows="12" style="font-size:12px;font-family:monospace"></textarea>' +
-        '<button id="cfg-paste" class="sm primary" title="Paste from clipboard">📋 Paste</button>' +
+        '<button id="cfg-paste" class="sm primary">📋 Paste</button>' +
       '</div>' +
       '<button id="cfg-load" class="sm primary" style="margin-top:6px">Load</button>';
     $('cfg-paste').addEventListener('click', function() { pasteFromClipboard($('cfg-import')); });
@@ -981,23 +1183,15 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
       var blob = new Blob([text], { type: mimeType + ';charset=utf-8' });
       var url = URL.createObjectURL(blob);
       var a = document.createElement('a');
-      a.href = url;
-      a.download = filename;
-      a.style.display = 'none';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
+      a.href = url; a.download = filename; a.style.display = 'none';
+      document.body.appendChild(a); a.click(); document.body.removeChild(a);
       setTimeout(function() { URL.revokeObjectURL(url); }, 2000);
       toast('File ' + filename + ' downloaded');
       return;
     } catch (e) { console.warn('download failed', e); }
-
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      try {
-        await navigator.clipboard.writeText(text);
-        toast('Copied to clipboard');
-        return;
-      } catch (e) { console.warn('clipboard failed', e); }
+      try { await navigator.clipboard.writeText(text); toast('Copied to clipboard'); return; }
+      catch (e) { console.warn('clipboard failed', e); }
     }
     showTextFallback(text);
   }
@@ -1008,21 +1202,17 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
       '<div class="note" style="margin-bottom:6px">Copy manually (Ctrl+C / long-press → Copy):</div>' +
       '<textarea id="manual-copy" rows="15" style="width:100%;font-size:12px;font-family:monospace"></textarea>';
     var ta = $('manual-copy');
-    ta.value = text;
-    ta.focus();
-    ta.select();
+    ta.value = text; ta.focus(); ta.select();
     toast('Select and copy', 1);
     scrollIntoViewSoft(el);
   }
 
   $('btn-export').addEventListener('click', function() {
     if (!Object.keys(state.crosshairs).length) { toast('Profile is empty', 1); return; }
-    var filename = slug(state.name) + '.cfg';
-    exportText(genCFG(), filename);
+    exportText(genCFG(), slug(state.name) + '.cfg');
   });
   $('btn-export-json').addEventListener('click', function() {
-    var filename = slug(state.name) + '.json';
-    exportText(JSON.stringify(state, null, 2), filename);
+    exportText(JSON.stringify(state, null, 2), slug(state.name) + '.json');
   });
 
   document.querySelectorAll('.tab').forEach(function(t) {
@@ -1036,7 +1226,9 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
     });
   });
 
+  // ================== START ==================
   loadState();
+  bindGlobals();
   renderProf();
 
   var libUrls = [
