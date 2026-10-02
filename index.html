@@ -99,7 +99,6 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
 .g-sub{font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:1px;margin:10px 0 4px;font-weight:700}
 .g-sub:first-child{margin-top:2px}
 .g-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.g-row-3{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
 .gren-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-top:6px}
 .gren-row{display:flex;align-items:center;gap:8px;background:var(--bg-3);padding:6px 8px;border-radius:6px;border:1px solid var(--border)}
 .gren-row input[type=checkbox]{width:auto;margin:0;padding:0;height:16px;width:16px;flex-shrink:0}
@@ -120,7 +119,7 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
   .card{padding:12px}.row-btns{grid-template-columns:1fr;gap:8px}
   .paste-row{flex-direction:column}.paste-row button{align-self:stretch;min-height:44px}
   .credits{font-size:11px;padding:14px}
-  .g-row,.g-row-3{grid-template-columns:1fr}
+  .g-row{grid-template-columns:1fr}
   .gren-grid{grid-template-columns:1fr}
 }
 @media(max-width:380px){
@@ -159,8 +158,8 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
 <div class="wrap">
 
 <div id="tab-dec">
-  <label>CSGO-... codes (one per line)</label>
-  <textarea id="d-in" rows="4" placeholder="CSGO-xxxxx-xxxxx-xxxxx-xxxxx-xxxxx"></textarea>
+  <label>Share codes (one per line) — CS… or CSGO-…</label>
+  <textarea id="d-in" rows="4" placeholder="CSxxxxx... or CSGO-xxxxx-xxxxx-xxxxx-xxxxx-xxxxx"></textarea>
   <button class="primary" id="btn-dec">Decode</button>
   <div id="dec-out"></div>
 </div>
@@ -171,62 +170,24 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
 
   <h3>Global settings</h3>
   <div class="globals">
-
     <div class="g-sub">Sniper scope</div>
     <div class="g-row">
-      <div>
-        <label>Sniper width (0–5)</label>
-        <input id="g-sniper" type="number" min="0" max="5" value="1">
-      </div>
-      <div>
-        <label>Show inaccuracy</label>
-        <select id="g-sniper-inacc"><option value="1">Yes</option><option value="0">No</option></select>
-      </div>
+      <div><label>Sniper width (0–5)</label><input id="g-sniper" type="number" min="0" max="5" value="1"></div>
+      <div><label>Show inaccuracy</label><select id="g-sniper-inacc"><option value="1">Yes</option><option value="0">No</option></select></div>
     </div>
     <div class="g-row">
-      <div>
-        <label>Delay unscope after shot</label>
-        <select id="g-sniper-delay"><option value="1">Yes</option><option value="0">No</option></select>
-      </div>
-      <div>
-        <label>Auto rezoom after shot</label>
-        <select id="g-sniper-rezoom"><option value="1">Yes</option><option value="0">No</option></select>
-      </div>
+      <div><label>Delay unscope after shot</label><select id="g-sniper-delay"><option value="1">Yes</option><option value="0">No</option></select></div>
+      <div><label>Auto rezoom after shot</label><select id="g-sniper-rezoom"><option value="1">Yes</option><option value="0">No</option></select></div>
     </div>
-
     <div class="g-sub">Grenade crosshairs</div>
-    <div>
-      <label>Keep user crosshair when holding grenade</label>
-      <select id="g-keep"><option value="1">Yes</option><option value="0">No</option></select>
-    </div>
+    <div><label>Keep user crosshair when holding grenade</label><select id="g-keep"><option value="1">Yes</option><option value="0">No</option></select></div>
     <div class="gren-grid">
-      <div class="gren-row">
-        <input type="checkbox" id="g-flash">
-        <span>Flash</span>
-        <input type="number" id="g-delay-flash" min="0" max="5" step="0.1" value="2">
-      </div>
-      <div class="gren-row">
-        <input type="checkbox" id="g-explosive">
-        <span>Explosive</span>
-        <input type="number" id="g-delay-explosive" min="0" max="5" step="0.1" value="2">
-      </div>
-      <div class="gren-row">
-        <input type="checkbox" id="g-fire">
-        <span>Fire</span>
-        <input type="number" id="g-delay-fire" min="0" max="5" step="0.1" value="2">
-      </div>
-      <div class="gren-row">
-        <input type="checkbox" id="g-smoke">
-        <span>Smoke</span>
-        <input type="number" id="g-delay-smoke" min="0" max="5" step="0.1" value="2">
-      </div>
-      <div class="gren-row">
-        <input type="checkbox" id="g-decoy">
-        <span>Decoy</span>
-        <input type="number" id="g-delay-decoy" min="0" max="5" step="0.1" value="2">
-      </div>
+      <div class="gren-row"><input type="checkbox" id="g-flash"><span>Flash</span><input type="number" id="g-delay-flash" min="0" max="5" step="0.1" value="2"></div>
+      <div class="gren-row"><input type="checkbox" id="g-explosive"><span>Explosive</span><input type="number" id="g-delay-explosive" min="0" max="5" step="0.1" value="2"></div>
+      <div class="gren-row"><input type="checkbox" id="g-fire"><span>Fire</span><input type="number" id="g-delay-fire" min="0" max="5" step="0.1" value="2"></div>
+      <div class="gren-row"><input type="checkbox" id="g-smoke"><span>Smoke</span><input type="number" id="g-delay-smoke" min="0" max="5" step="0.1" value="2"></div>
+      <div class="gren-row"><input type="checkbox" id="g-decoy"><span>Decoy</span><input type="number" id="g-delay-decoy" min="0" max="5" step="0.1" value="2"></div>
     </div>
-    <div class="note">Delay numbers = <code>cl_grenadecrosshairdelay_*</code> in seconds.</div>
   </div>
 
   <h3>Crosshairs · Numpad 1–9</h3>
@@ -272,8 +233,8 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
   <div class="credit-block">
     <b>Credits</b><br>
     Counter-Strike 2 — Valve Corporation<br>
-    Share code library — <span class="k">akiver/csgo-sharecode</span> (MIT)<br>
-    Library CDN — <span class="k">jsdelivr.net</span>, fallback <span class="k">unpkg.com</span><br>
+    Share code decoding — <span class="k">cs2-decode.js</span> (standalone)<br>
+    Reference — <span class="k">akiver/csgo-sharecode</span> (MIT)<br>
     Prompted &amp; directed by — <span class="k">Frakturehawkens</span><br>
     Built with — <span class="k">DeepSeek</span>
   </div>
@@ -283,20 +244,18 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
 
 <div id="toast" class="toast"></div>
 
+<script src="cs2-decode.js"></script>
 <script>
 (function() {
   'use strict';
 
+  var CS2Decode = window.CS2Decode || null;
+
   var THEME_KEY = 'cs2_v4ir_theme';
   var themeToggle = document.getElementById('theme-toggle');
   function applyTheme(theme) {
-    if (theme === 'light') {
-      document.documentElement.setAttribute('data-theme', 'light');
-      themeToggle.textContent = '☀️'; themeToggle.title = 'Switch to dark theme';
-    } else {
-      document.documentElement.removeAttribute('data-theme');
-      themeToggle.textContent = '🌙'; themeToggle.title = 'Switch to light theme';
-    }
+    if (theme === 'light') { document.documentElement.setAttribute('data-theme', 'light'); themeToggle.textContent = '☀️'; themeToggle.title = 'Switch to dark theme'; }
+    else { document.documentElement.removeAttribute('data-theme'); themeToggle.textContent = '🌙'; themeToggle.title = 'Switch to light theme'; }
   }
   function loadTheme() {
     var saved; try { saved = localStorage.getItem(THEME_KEY); } catch (e) {}
@@ -312,116 +271,64 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
     try { localStorage.setItem(THEME_KEY, next); } catch (e) {}
   });
 
-  var lib = null, libErr = null;
   var lastCleared = null;
-
   function $(id) { return document.getElementById(id); }
-  function esc(s) {
-    return String(s).replace(/[&<>"']/g, function(c) {
-      return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c];
-    });
-  }
-  function toast(m, e) {
-    var t = $('toast'); t.textContent = m;
-    t.className = 'toast show' + (e ? ' err' : '');
-    setTimeout(function() { t.className = 'toast'; }, 2000);
-  }
-  function scrollIntoViewSoft(el) {
-    if (!el) return;
-    setTimeout(function() {
-      try { el.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
-      catch (e) { el.scrollIntoView(); }
-    }, 60);
-  }
-  function num(v, fb) {
-    if (v === undefined || v === null) return fb;
-    if (typeof v === 'number' && isNaN(v)) return fb;
-    var n = parseFloat(v);
-    return isNaN(n) ? fb : n;
-  }
-  function slug(s) {
-    return String(s || 'profile').toLowerCase()
-      .replace(/[^a-z0-9_\-]+/g, '_').replace(/^_+|_+$/g, '').substring(0, 40) || 'profile';
-  }
+  function esc(s) { return String(s).replace(/[&<>"']/g, function(c) { return { '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]; }); }
+  function toast(m, e) { var t = $('toast'); t.textContent = m; t.className = 'toast show' + (e ? ' err' : ''); setTimeout(function() { t.className = 'toast'; }, 2000); }
+  function scrollIntoViewSoft(el) { if (!el) return; setTimeout(function() { try { el.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) { el.scrollIntoView(); } }, 60); }
+  function num(v, fb) { if (v === undefined || v === null) return fb; if (typeof v === 'number' && isNaN(v)) return fb; var n = parseFloat(v); return isNaN(n) ? fb : n; }
+  function slug(s) { return String(s || 'profile').toLowerCase().replace(/[^a-z0-9_\-]+/g, '_').replace(/^_+|_+$/g, '').substring(0, 40) || 'profile'; }
   function copyToClipboard(text, okMsg) {
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(function() { toast(okMsg || 'Copied'); },
-        function() { toast('Copy failed', 1); });
+      navigator.clipboard.writeText(text).then(function() { toast(okMsg || 'Copied'); }, function() { toast('Copy failed', 1); });
     } else {
-      var ta = document.createElement('textarea');
-      ta.value = text; document.body.appendChild(ta); ta.select();
-      try { document.execCommand('copy'); toast(okMsg || 'Copied'); }
-      catch (e) { toast('Copy failed', 1); }
+      var ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); toast(okMsg || 'Copied'); } catch (e) { toast('Copy failed', 1); }
       document.body.removeChild(ta);
     }
   }
   function pasteFromClipboard(target) {
     if (navigator.clipboard && navigator.clipboard.readText) {
-      navigator.clipboard.readText().then(function(txt) { target.value = txt; toast('Pasted'); },
-        function() { target.focus(); toast('Press Ctrl+V to paste', 1); });
+      navigator.clipboard.readText().then(function(txt) { target.value = txt; toast('Pasted'); }, function() { target.focus(); toast('Press Ctrl+V to paste', 1); });
     } else { target.focus(); toast('Press Ctrl+V to paste', 1); }
   }
   function sanitizeName(s) { return String(s || '').replace(/[^a-zA-Z0-9 _\-]/g, ''); }
   function pickFile(accept, onLoad) {
-    var inp = document.createElement('input');
-    inp.type = 'file'; inp.accept = accept; inp.style.display = 'none';
-    document.body.appendChild(inp);
+    var inp = document.createElement('input'); inp.type = 'file'; inp.accept = accept; inp.style.display = 'none'; document.body.appendChild(inp);
     inp.addEventListener('change', function() {
-      var file = inp.files && inp.files[0];
-      if (!file) { document.body.removeChild(inp); return; }
+      var file = inp.files && inp.files[0]; if (!file) { document.body.removeChild(inp); return; }
       var reader = new FileReader();
-      reader.onload = function() {
-        try { onLoad(reader.result, file.name); }
-        catch (e) { toast('Read error: ' + e.message, 1); }
-        document.body.removeChild(inp);
-      };
+      reader.onload = function() { try { onLoad(reader.result, file.name); } catch (e) { toast('Read error: ' + e.message, 1); } document.body.removeChild(inp); };
       reader.onerror = function() { toast('Failed to read file', 1); document.body.removeChild(inp); };
       reader.readAsText(file);
     });
     inp.click();
   }
 
-  var STY = {
-    0: 'Dynamic Cross', 1: 'Dynamic Circle', 2: 'Dynamic Cross Legacy',
-    3: 'Static Circle', 4: 'Static Cross', 5: 'Static Cross ShotFB',
-    6: 'Dot Only', 7: 'Dynamic Quad', 8: 'Static Square'
-  };
+  var STY = { 0:'Dynamic Cross', 1:'Dynamic Circle', 2:'Classic Dynamic', 3:'Static Circle', 4:'Static Cross', 5:'Static Cross ShotFB', 6:'Dot Only', 7:'Dynamic Quadrant', 8:'Static Square', 9:'Static Quadrant' };
   var OM = { 0: 'No outline', 1: 'Full outline', 2: 'Half outline' };
 
-  var SK = 'cs2_v4ir_profile_v3';
+  var SK = 'cs2_v4ir_profile_v4';
   var state = { name: 'My profile', crosshairs: {}, global: defaultGlobals() };
 
   function defaultGlobals() {
     return {
-      sniperWidth: 1,
-      sniperShowInaccuracy: true,
-      sniperDelayUnscope: false,
-      sniperAutoRezoom: true,
+      sniperWidth: 1, sniperShowInaccuracy: true, sniperDelayUnscope: false, sniperAutoRezoom: true,
       grenadeKeepUserCrosshair: true,
-      grenadeFlash: false,
-      grenadeExplosive: false,
-      grenadeFire: false,
-      grenadeSmoke: false,
-      grenadeDecoy: false,
-      grenadeDelayFlash: 2,
-      grenadeDelayExplosive: 2,
-      grenadeDelayFire: 2,
-      grenadeDelaySmoke: 2,
-      grenadeDelayDecoy: 2
+      grenadeFlash: false, grenadeExplosive: false, grenadeFire: false, grenadeSmoke: false, grenadeDecoy: false,
+      grenadeDelayFlash: 2, grenadeDelayExplosive: 2, grenadeDelayFire: 2, grenadeDelaySmoke: 2, grenadeDelayDecoy: 2
     };
   }
   function defaultCrosshair() {
     return {
-      name: 'Crosshair',
-      style: 4,
+      name: 'Crosshair', style: 4,
       length: 2, thickness: 1, gap: 0,
       centerDotEnabled: false, tStyleEnabled: false, followRecoil: false,
       red: 0, green: 255, blue: 0, alpha: 255,
       outlineMode: 0,
-      outlineR: 0, outlineG: 0, outlineB: 0, outlineA: 255,
+      outlineRed: 0, outlineGreen: 0, outlineBlue: 0, outlineAlpha: 255,
       spreadLimit: 255,
-      ironsightUseCrosshairColor: true,
-      ironsightDotScale: 1,
+      scopeDotUseColor: true, scopeDotScale: 1,
       splitDistance: 0, splitSizeRatio: 1,
       innerSplitAlpha: 0, outerSplitAlpha: 1,
       screenHeight: 1080
@@ -429,53 +336,32 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
   }
   function migrateCrosshair(ch) {
     var d = defaultCrosshair();
-    for (var k in d) {
-      if (ch[k] === undefined || ch[k] === null) ch[k] = d[k];
-    }
+    for (var k in d) if (ch[k] === undefined || ch[k] === null) ch[k] = d[k];
     return ch;
   }
-
   function loadState() {
-    // Try v3, then v2 (migrate), then v1
     var raw = null;
     try { raw = localStorage.getItem(SK); } catch (e) {}
-    if (!raw) {
-      try { raw = localStorage.getItem('cs2_v4ir_profile_v2'); } catch (e) {}
-    }
-    if (!raw) {
-      try { raw = localStorage.getItem('cs2_v4ir_profile_v1'); } catch (e) {}
-    }
-    if (raw) {
-      try {
-        var p = JSON.parse(raw);
-        if (p && p.crosshairs) state = p;
-      } catch (e) { console.warn(e); }
-    }
+    if (!raw) try { raw = localStorage.getItem('cs2_v4ir_profile_v3'); } catch (e) {}
+    if (!raw) try { raw = localStorage.getItem('cs2_v4ir_profile_v2'); } catch (e) {}
+    if (!raw) try { raw = localStorage.getItem('cs2_v4ir_profile_v1'); } catch (e) {}
+    if (raw) { try { var p = JSON.parse(raw); if (p && p.crosshairs) state = p; } catch (e) { console.warn(e); } }
     if (!state.global) state.global = defaultGlobals();
     var dg = defaultGlobals();
     for (var gk in dg) if (state.global[gk] === undefined) state.global[gk] = dg[gk];
-    // Purge old field names if any
-    delete state.global.grenadeHE;
-    delete state.global.grenadeMolotov;
-    delete state.global.grenadeInc;
-    for (var slot in state.crosshairs) {
-      state.crosshairs[slot] = migrateCrosshair(state.crosshairs[slot]);
-    }
+    for (var slot in state.crosshairs) state.crosshairs[slot] = migrateCrosshair(state.crosshairs[slot]);
     if (!state.name) state.name = 'My profile';
   }
-  function saveState() {
-    try { localStorage.setItem(SK, JSON.stringify(state)); } catch (e) { console.warn(e); }
-  }
+  function saveState() { try { localStorage.setItem(SK, JSON.stringify(state)); } catch (e) { console.warn(e); } }
 
-  // ================== COMMAND GENERATION ==================
+  // ========== COMMANDS ==========
   function toCommands(d) {
     var style = num(d.style, 4);
     var om = num(d.outlineMode, 0);
     var outlineDraw = om > 0 ? 1 : 0;
-    var length    = num(d.length, 2);
+    var length = num(d.length, 2);
     var thickness = num(d.thickness, 1);
-    var gap       = num(d.gap, 0);
-
+    var gap = num(d.gap, 0);
     return [
       'cl_crosshairstyle ' + style,
       'cl_crosshair_length ' + length,
@@ -488,21 +374,20 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
       'cl_crosshaircolor_g ' + num(d.green, 255),
       'cl_crosshaircolor_b ' + num(d.blue, 0),
       'cl_crosshaircolor_a ' + num(d.alpha, 255),
-      'cl_crosshairoutline_r ' + num(d.outlineR, 0),
-      'cl_crosshairoutline_g ' + num(d.outlineG, 0),
-      'cl_crosshairoutline_b ' + num(d.outlineB, 0),
-      'cl_crosshairoutline_a ' + num(d.outlineA, 255),
+      'cl_crosshairoutline_r ' + num(d.outlineRed, 0),
+      'cl_crosshairoutline_g ' + num(d.outlineGreen, 0),
+      'cl_crosshairoutline_b ' + num(d.outlineBlue, 0),
+      'cl_crosshairoutline_a ' + num(d.outlineAlpha, 255),
       'cl_crosshair_recoil ' + (d.followRecoil ? 'true' : 'false'),
       'cl_crosshair_dynamic_splitdist ' + num(d.splitDistance, 0),
       'cl_crosshair_dynamic_maxdist_splitratio ' + num(d.splitSizeRatio, 1),
       'cl_crosshair_dynamic_splitalpha_innermod ' + num(d.innerSplitAlpha, 0),
       'cl_crosshair_dynamic_splitalpha_outermod ' + num(d.outerSplitAlpha, 1),
       'cl_crosshair_dynamic_spread_limit ' + num(d.spreadLimit, 255),
-      'cl_ironsight_usecrosshaircolor ' + (d.ironsightUseCrosshairColor !== false ? 'true' : 'false'),
-      'cl_ironsight_dot_scale ' + num(d.ironsightDotScale, 1).toFixed(2)
+      'cl_ironsight_usecrosshaircolor ' + (d.scopeDotUseColor !== false ? 'true' : 'false'),
+      'cl_ironsight_dot_scale ' + num(d.scopeDotScale, 1).toFixed(2)
     ];
   }
-
   function globalCommands() {
     var g = state.global || defaultGlobals();
     return [
@@ -523,35 +408,31 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
       'cl_grenadecrosshairdelay_decoy ' + num(g.grenadeDelayDecoy, 2)
     ];
   }
+  function formatCommands(cmds) { return cmds.map(function(c) { return c + ';'; }).join('\n'); }
 
-  function formatCommands(cmds) {
-    return cmds.map(function(c) { return c + ';'; }).join('\n');
-  }
-
-  // ================== DECODE / ENCODE ==================
+  // ========== DECODE / ENCODE ==========
   function decodeToCh(d) {
     var ch = defaultCrosshair();
     ch.name = 'Import ' + new Date().toLocaleTimeString('en-US', {hour:'2-digit',minute:'2-digit'});
-    ch.style   = num(d.style, ch.style);
-    ch.length  = num(d.length, ch.length);
+    ch.style = num(d.style, ch.style);
+    ch.length = num(d.length, ch.length);
     ch.thickness = num(d.thickness, ch.thickness);
-    ch.gap     = num(d.gap, ch.gap);
+    ch.gap = num(d.gap, ch.gap);
     ch.centerDotEnabled = !!d.centerDotEnabled;
-    ch.tStyleEnabled    = !!d.tStyleEnabled;
-    ch.followRecoil     = !!d.followRecoil;
-    ch.red   = num(d.red, ch.red);
+    ch.tStyleEnabled = !!d.tStyleEnabled;
+    ch.followRecoil = !!d.followRecoil;
+    ch.red = num(d.red, ch.red);
     ch.green = num(d.green, ch.green);
-    ch.blue  = num(d.blue, ch.blue);
+    ch.blue = num(d.blue, ch.blue);
     ch.alpha = num(d.alpha, ch.alpha);
     ch.outlineMode = num(d.outlineMode, 0);
-    ch.outlineR = num(d.outlineR, ch.outlineR);
-    ch.outlineG = num(d.outlineG, ch.outlineG);
-    ch.outlineB = num(d.outlineB, ch.outlineB);
-    ch.outlineA = num(d.outlineA, ch.outlineA);
-    ch.spreadLimit = num(d.spreadLimit, ch.spreadLimit);
-    ch.ironsightUseCrosshairColor = d.ironsightUseCrosshairColor !== undefined
-      ? !!d.ironsightUseCrosshairColor : ch.ironsightUseCrosshairColor;
-    ch.ironsightDotScale = num(d.ironsightDotScale, ch.ironsightDotScale);
+    ch.outlineRed = num(d.outlineRed, ch.outlineRed);
+    ch.outlineGreen = num(d.outlineGreen, ch.outlineGreen);
+    ch.outlineBlue = num(d.outlineBlue, ch.outlineBlue);
+    ch.outlineAlpha = num(d.outlineAlpha, ch.alpha);
+    ch.spreadLimit = num(d.dynamicSpreadLimit, ch.spreadLimit);
+    ch.scopeDotUseColor = d.scopeDotUseColor !== undefined ? !!d.scopeDotUseColor : ch.scopeDotUseColor;
+    ch.scopeDotScale = num(d.scopeDotScale, ch.scopeDotScale);
     ch.splitDistance = num(d.splitDistance, ch.splitDistance);
     ch.splitSizeRatio = num(d.splitSizeRatio, ch.splitSizeRatio);
     ch.innerSplitAlpha = num(d.innerSplitAlpha, ch.innerSplitAlpha);
@@ -559,42 +440,42 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
     ch.screenHeight = num(d.screenHeight, ch.screenHeight);
     return ch;
   }
-
   function encodeToShareCode(ch) {
-    if (!lib || !lib.encodeCrosshair) return null;
+    if (!CS2Decode || !CS2Decode.encodeCrosshair) return null;
     try {
-      return lib.encodeCrosshair({
-        version: 4,
+      return CS2Decode.encodeCrosshair({
         style: ch.style,
-        length: ch.length,
-        thickness: ch.thickness,
-        gap: ch.gap,
+        length: ch.length, thickness: ch.thickness, gap: ch.gap,
         centerDotEnabled: ch.centerDotEnabled,
         tStyleEnabled: ch.tStyleEnabled,
         followRecoil: ch.followRecoil,
         red: ch.red, green: ch.green, blue: ch.blue, alpha: ch.alpha,
+        outlineRed: ch.outlineRed || 0, outlineGreen: ch.outlineGreen || 0,
+        outlineBlue: ch.outlineBlue || 0,
+        outlineAlpha: ch.outlineAlpha == null ? ch.alpha : ch.outlineAlpha,
         outlineMode: ch.outlineMode,
         splitDistance: ch.splitDistance,
         splitSizeRatio: ch.splitSizeRatio,
         innerSplitAlpha: ch.innerSplitAlpha,
         outerSplitAlpha: ch.outerSplitAlpha,
-        screenHeight: ch.screenHeight
+        dynamicSpreadLimit: ch.spreadLimit,
+        scopeDotUseColor: ch.scopeDotUseColor,
+        scopeDotScale: ch.scopeDotScale,
+        screenHeight: ch.screenHeight || 1080
       });
     } catch (e) { console.warn('encode failed', e); return null; }
   }
-
   function addCodeToProfile(code) {
-    if (!lib) { toast('Decoder not loaded', 1); return; }
+    if (!CS2Decode) { toast('Decoder not loaded', 1); return; }
     var d;
-    try { d = lib.decodeCrosshairShareCode(code); }
-    catch (e) { toast('Decode error: ' + e.message, 1); return; }
+    try { d = CS2Decode.decodeCrosshair(code); } catch (e) { toast('Decode error: ' + e.message, 1); return; }
+    if (!d) { toast('Invalid or unknown code', 1); return; }
     var used = Object.keys(state.crosshairs).map(Number);
     var free = [];
     for (var i = 1; i <= 9; i++) if (used.indexOf(i) === -1) free.push(i);
     var slot;
-    if (free.length > 0) {
-      slot = free[0];
-    } else {
+    if (free.length > 0) { slot = free[0]; }
+    else {
       var pick = prompt('All 9 slots are full. Replace which one? (1–9)', '1');
       if (!pick) return;
       slot = parseInt(pick, 10);
@@ -607,33 +488,29 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
     scrollIntoViewSoft($('p-list').lastElementChild);
   }
 
-  // ================== DECODER UI ==================
+  // ========== DECODER UI ==========
   function renderDecodeOutput(codes) {
     var out = $('dec-out');
     var parts = [];
     for (var i = 0; i < codes.length; i++) {
       var c = codes[i];
       try {
-        var d = lib.decodeCrosshairShareCode(c);
+        var d = CS2Decode.decodeCrosshair(c);
+        if (!d) { parts.push({ html: '<div class="res err">' + esc(c) + '\nError: invalid code</div>', code: null }); continue; }
         var cmds = toCommands(d);
         var styleName = STY[d.style] || ('style ' + d.style);
-        var omName = (d.outlineMode === undefined || d.outlineMode === null)
-          ? 'unknown' : (OM[d.outlineMode] || ('outline ' + d.outlineMode));
-        var ver = (d.outlineMode === undefined || d.outlineMode === null) ? 'V3' : 'V4';
+        var omName = (d.outlineMode === undefined || d.outlineMode === null) ? 'unknown' : (OM[d.outlineMode] || ('outline ' + d.outlineMode));
+        var ver = 'V' + d.version;
         var html = '<div class="res">';
         html += '<div class="code">' + esc(c) + '</div>';
-        html += '<div class="note" style="margin:6px 0">' + esc(styleName) +
-                ' · Outline: ' + esc(omName) + ' · ' + ver + '</div>';
+        html += '<div class="note" style="margin:6px 0">' + esc(styleName) + ' · Outline: ' + esc(omName) + ' · ' + ver + '</div>';
         html += '<pre>' + esc(formatCommands(cmds)) + '</pre>';
         html += '<button class="sm" data-r="copy">📋 Copy</button> ';
         html += '<button class="sm primary" data-r="add">＋ To profile</button>';
         html += '</div>';
         parts.push({ html: html, code: c, cmds: cmds });
       } catch (e) {
-        parts.push({
-          html: '<div class="res err">' + esc(c) + '\nError: ' + esc(e.message || e) + '</div>',
-          code: null
-        });
+        parts.push({ html: '<div class="res err">' + esc(c) + '\nError: ' + esc(e.message || e) + '</div>', code: null });
       }
     }
     out.innerHTML = parts.map(function(p) { return p.html; }).join('');
@@ -643,30 +520,23 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
         if (!item.code) return;
         var copyBtn = block.querySelector('button[data-r="copy"]');
         var addBtn = block.querySelector('button[data-r="add"]');
-        if (copyBtn) copyBtn.addEventListener('click', function() {
-          copyToClipboard(formatCommands(item.cmds));
-        });
-        if (addBtn) addBtn.addEventListener('click', function() {
-          addCodeToProfile(item.code);
-        });
+        if (copyBtn) copyBtn.addEventListener('click', function() { copyToClipboard(formatCommands(item.cmds)); });
+        if (addBtn) addBtn.addEventListener('click', function() { addCodeToProfile(item.code); });
       })(blocks[k], parts[k]);
     }
     scrollIntoViewSoft(out);
   }
-
   $('btn-dec').addEventListener('click', function() {
     var raw = $('d-in').value.trim();
     if (!raw) { $('dec-out').innerHTML = '<div class="res err">Paste a code</div>'; return; }
-    if (libErr) { $('dec-out').innerHTML = '<div class="res err">Library failed to load: ' + esc(libErr.message) + '</div>'; return; }
-    if (!lib) { $('dec-out').innerHTML = '<div class="res err">Decoder loading, wait 2–3 sec</div>'; return; }
+    if (!CS2Decode) { $('dec-out').innerHTML = '<div class="res err">cs2-decode.js failed to load. Make sure the file is next to index.html.</div>'; return; }
     var codes = raw.split(/\s+/).filter(Boolean);
     renderDecodeOutput(codes);
   });
 
-  // ================== PROFILE UI ==================
+  // ========== PROFILE UI ==========
   function renderProf() {
     $('p-name').value = state.name;
-
     var g = state.global || defaultGlobals();
     $('g-sniper').value = num(g.sniperWidth, 1);
     $('g-sniper-inacc').value = g.sniperShowInaccuracy ? '1' : '0';
@@ -684,35 +554,26 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
     $('g-delay-smoke').value = num(g.grenadeDelaySmoke, 2);
     $('g-delay-decoy').value = num(g.grenadeDelayDecoy, 2);
 
-    var list = $('p-list');
-    list.innerHTML = '';
+    var list = $('p-list'); list.innerHTML = '';
     var has = false;
     for (var i = 1; i <= 9; i++) {
-      var ch = state.crosshairs[i];
-      if (!ch) continue;
+      var ch = state.crosshairs[i]; if (!ch) continue;
       has = true;
       var shareCode = encodeToShareCode(ch);
-      var codeLine = shareCode
-        ? '<div class="ch-code">' + esc(shareCode) + '</div>'
-        : '<div class="ch-code" style="color:var(--text-dim)">— share code unavailable —</div>';
-
-      var d = document.createElement('div');
-      d.className = 'card';
-      d.innerHTML =
-        '<div class="card-head">' +
-          '<div class="slot-badge">' + i + '</div>' +
-          '<div class="ch-body">' +
-            '<div class="ch-name" data-slot="' + i + '" title="Tap to rename">' + esc(ch.name || 'Crosshair') + '</div>' +
-            '<div class="ch-info">' + (STY[ch.style] || '?') +
-              ' · len ' + ch.length + ' · th ' + ch.thickness + ' · gap ' + ch.gap + '</div>' +
-            codeLine +
-          '</div>' +
-          '<div class="ch-actions">' +
-            '<button class="sm" data-r="cc" data-code="' + esc(shareCode || '') + '" title="Copy share code">📋</button>' +
-            '<button class="sm" data-r="swap" data-slot="' + i + '" title="Swap slot">⇄</button>' +
-            '<button class="sm dang" data-r="del" data-slot="' + i + '" title="Delete">✕</button>' +
-          '</div>' +
-        '</div>';
+      var codeLine = shareCode ? '<div class="ch-code">' + esc(shareCode) + '</div>' : '<div class="ch-code" style="color:var(--text-dim)">— share code unavailable —</div>';
+      var d = document.createElement('div'); d.className = 'card';
+      d.innerHTML = '<div class="card-head">' +
+        '<div class="slot-badge">' + i + '</div>' +
+        '<div class="ch-body">' +
+          '<div class="ch-name" data-slot="' + i + '" title="Tap to rename">' + esc(ch.name || 'Crosshair') + '</div>' +
+          '<div class="ch-info">' + (STY[ch.style] || '?') + ' · len ' + ch.length + ' · th ' + ch.thickness + ' · gap ' + ch.gap + '</div>' +
+          codeLine +
+        '</div>' +
+        '<div class="ch-actions">' +
+          '<button class="sm" data-r="cc" data-code="' + esc(shareCode || '') + '" title="Copy share code">📋</button>' +
+          '<button class="sm" data-r="swap" data-slot="' + i + '" title="Swap slot">⇄</button>' +
+          '<button class="sm dang" data-r="del" data-slot="' + i + '" title="Delete">✕</button>' +
+        '</div></div>';
       list.appendChild(d);
     }
     if (!has) list.innerHTML = '<div class="empty">Empty. Add from decoder or use the button below.</div>';
@@ -726,19 +587,13 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
         v = v.trim().substring(0, 32);
         if (!v) v = 'Crosshair ' + slot;
         state.crosshairs[slot].name = v;
-        saveState();
-        renderProf();
-        toast('Renamed');
+        saveState(); renderProf(); toast('Renamed');
       });
     });
     list.querySelectorAll('button[data-r="del"]').forEach(function(b) {
       b.addEventListener('click', function() {
         var slot = b.dataset.slot;
-        if (confirm('Delete crosshair from Numpad ' + slot + '?')) {
-          delete state.crosshairs[slot];
-          saveState();
-          renderProf();
-        }
+        if (confirm('Delete crosshair from Numpad ' + slot + '?')) { delete state.crosshairs[slot]; saveState(); renderProf(); }
       });
     });
     list.querySelectorAll('button[data-r="swap"]').forEach(function(b) {
@@ -754,9 +609,7 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
         state.crosshairs[to] = tmp;
         if (!state.crosshairs[from]) delete state.crosshairs[from];
         if (!state.crosshairs[to]) delete state.crosshairs[to];
-        saveState();
-        renderProf();
-        toast('Swapped ' + from + ' ⇄ ' + to);
+        saveState(); renderProf(); toast('Swapped ' + from + ' ⇄ ' + to);
       });
     });
     list.querySelectorAll('button[data-r="cc"]').forEach(function(b) {
@@ -767,29 +620,16 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
     });
   }
 
-  // ---- Global settings handlers ----
   function bindGlobals() {
     function bindNum(id, key, min, max) {
       $(id).addEventListener('input', function(e) {
-        var v = parseFloat(e.target.value);
-        if (isNaN(v)) v = min;
+        var v = parseFloat(e.target.value); if (isNaN(v)) v = min;
         if (v < min) v = min; if (v > max) v = max;
-        state.global[key] = v;
-        saveState();
+        state.global[key] = v; saveState();
       });
     }
-    function bindBool(id, key) {
-      $(id).addEventListener('change', function(e) {
-        state.global[key] = e.target.value === '1';
-        saveState();
-      });
-    }
-    function bindCheck(id, key) {
-      $(id).addEventListener('change', function(e) {
-        state.global[key] = e.target.checked;
-        saveState();
-      });
-    }
+    function bindBool(id, key) { $(id).addEventListener('change', function(e) { state.global[key] = e.target.value === '1'; saveState(); }); }
+    function bindCheck(id, key) { $(id).addEventListener('change', function(e) { state.global[key] = e.target.checked; saveState(); }); }
     bindNum('g-sniper', 'sniperWidth', 0, 5);
     bindBool('g-sniper-inacc', 'sniperShowInaccuracy');
     bindBool('g-sniper-delay', 'sniperDelayUnscope');
@@ -810,51 +650,29 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
   $('p-name').addEventListener('input', function(e) {
     var cleaned = sanitizeName(e.target.value);
     if (cleaned !== e.target.value) e.target.value = cleaned;
-    state.name = cleaned || 'My profile';
-    saveState();
+    state.name = cleaned || 'My profile'; saveState();
   });
-
   $('btn-add-code').addEventListener('click', function() {
-    if (!lib) { toast('Decoder not loaded yet', 1); return; }
-    var code = prompt('Paste share code:');
-    if (!code) return;
-    addCodeToProfile(code.trim());
-    renderProf();
+    if (!CS2Decode) { toast('Decoder not loaded', 1); return; }
+    var code = prompt('Paste share code:'); if (!code) return;
+    addCodeToProfile(code.trim()); renderProf();
   });
-
   $('btn-clear').addEventListener('click', function() {
     if (!Object.keys(state.crosshairs).length) { toast('Profile already empty', 1); return; }
     if (!confirm('Clear the entire profile?')) return;
-    lastCleared = JSON.parse(JSON.stringify(state));
-    state.crosshairs = {};
-    saveState();
-    renderProf();
-    $('btn-restore').classList.remove('hidden');
+    lastCleared = JSON.parse(JSON.stringify(state)); state.crosshairs = {};
+    saveState(); renderProf(); $('btn-restore').classList.remove('hidden');
     toast('Profile cleared — press Restore to undo');
   });
   $('btn-restore').addEventListener('click', function() {
     if (!lastCleared) { toast('Nothing to restore', 1); return; }
-    state = lastCleared;
-    lastCleared = null;
-    saveState();
-    renderProf();
-    $('btn-restore').classList.add('hidden');
-    toast('Profile restored');
+    state = lastCleared; lastCleared = null; saveState(); renderProf();
+    $('btn-restore').classList.add('hidden'); toast('Profile restored');
   });
 
-  // ================== CFG EXPORT ==================
+  // ========== CFG EXPORT ==========
   function buildCmds(ch) { return toCommands(ch); }
-  function splitChunks(cmds, max) {
-    var out = [], c = '';
-    for (var i = 0; i < cmds.length; i++) {
-      var cmd = cmds[i];
-      var cand = c ? c + '; ' + cmd : cmd;
-      if (cand.length > max && c) { out.push(c); c = cmd; }
-      else c = cand;
-    }
-    if (c) out.push(c);
-    return out;
-  }
+  function splitChunks(cmds, max) { var out = [], c = ''; for (var i = 0; i < cmds.length; i++) { var cmd = cmds[i]; var cand = c ? c + '; ' + cmd : cmd; if (cand.length > max && c) { out.push(c); c = cmd; } else c = cand; } if (c) out.push(c); return out; }
   function genCFG() {
     var slots = Object.keys(state.crosshairs).map(Number).sort(function(a,b){ return a-b; });
     var L = [];
@@ -867,17 +685,12 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
     L.push('// --- Global settings ---');
     globalCommands().forEach(function(c) { L.push(c); });
     L.push('');
-    if (!slots.length) {
-      L.push('// No crosshairs in profile');
-      return L.join('\n');
-    }
+    if (!slots.length) { L.push('// No crosshairs in profile'); return L.join('\n'); }
     slots.forEach(function(bind, i) {
       var ch = state.crosshairs[bind];
       var chunks = splitChunks(buildCmds(ch), 200);
       L.push('// --- Numpad ' + bind + ' : ' + (ch.name || ('Crosshair ' + bind)) + ' ---');
-      chunks.forEach(function(c, j) {
-        L.push('alias "xh' + (i+1) + '_p' + (j+1) + '" "' + c + '"');
-      });
+      chunks.forEach(function(c, j) { L.push('alias "xh' + (i+1) + '_p' + (j+1) + '" "' + c + '"'); });
       L.push('');
     });
     L.push('// --- Binds ---');
@@ -896,23 +709,16 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
     L.push('echo "Crosshair profile loaded: ' + state.name.replace(/"/g, '') + '"');
     return L.join('\n');
   }
-
   $('btn-preview-cfg').addEventListener('click', function() {
     var el = $('p-prev');
-    if (el.classList.contains('hidden')) {
-      el.innerHTML = '<pre>' + esc(genCFG()) + '</pre>';
-      el.classList.remove('hidden');
-      scrollIntoViewSoft(el);
-    } else { el.classList.add('hidden'); }
+    if (el.classList.contains('hidden')) { el.innerHTML = '<pre>' + esc(genCFG()) + '</pre>'; el.classList.remove('hidden'); scrollIntoViewSoft(el); }
+    else el.classList.add('hidden');
   });
-
   $('btn-export-codes').addEventListener('click', function() {
     var slots = Object.keys(state.crosshairs).map(Number).sort(function(a,b){ return a-b; });
     if (!slots.length) { toast('Profile is empty', 1); return; }
-    if (!lib) { toast('Decoder not loaded yet', 1); return; }
-    var lines = [];
-    lines.push('CS2 V4ir profile: ' + state.name);
-    lines.push('');
+    if (!CS2Decode) { toast('Decoder not loaded yet', 1); return; }
+    var lines = ['CS2 V4ir profile: ' + state.name, ''];
     slots.forEach(function(bind) {
       var ch = state.crosshairs[bind];
       var code = encodeToShareCode(ch);
@@ -921,70 +727,48 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
       lines.push('');
     });
     var text = lines.join('\n').trimEnd();
-    var el = $('p-prev');
-    el.classList.remove('hidden');
-    el.innerHTML =
-      '<div class="note" style="margin-bottom:6px">All share codes:</div>' +
+    var el = $('p-prev'); el.classList.remove('hidden');
+    el.innerHTML = '<div class="note" style="margin-bottom:6px">All share codes:</div>' +
       '<textarea id="codes-out" rows="18" style="width:100%;font-size:12px;font-family:monospace"></textarea>' +
       '<button id="codes-copy" class="sm primary" style="margin-top:6px">📋 Copy all</button>';
     $('codes-out').value = text;
-    $('codes-copy').addEventListener('click', function() {
-      copyToClipboard(text, 'All share codes copied');
-    });
+    $('codes-copy').addEventListener('click', function() { copyToClipboard(text, 'All share codes copied'); });
     scrollIntoViewSoft(el);
   });
 
-  // ================== CFG IMPORT ==================
+  // ========== CFG IMPORT ==========
   function parseV4irCfg(text) {
     var aliases = {}, binds = {};
     var lines = text.split('\n');
-    var globalCmds = [];
-    var inGlobal = false;
+    var globalCmds = [], inGlobal = false;
     for (var i = 0; i < lines.length; i++) {
       var line = lines[i];
       var cut = line.indexOf('//');
       var codePart = cut >= 0 ? line.substring(0, cut).trim() : line.trim();
       var commentPart = cut >= 0 ? line.substring(cut) : '';
       if (/Global settings/i.test(commentPart)) { inGlobal = true; continue; }
-      if (/Numpad\s+\d/i.test(commentPart)) { inGlobal = false; }
+      if (/Numpad\s+\d/i.test(commentPart)) inGlobal = false;
       if (!codePart) continue;
       var mAlias = codePart.match(/^alias\s+"([^"]+)"\s+"([^"]*)"/i);
-      if (mAlias) {
-        aliases[mAlias[1]] = mAlias[2].split(';').map(function(s){return s.trim();}).filter(Boolean);
-        continue;
-      }
+      if (mAlias) { aliases[mAlias[1]] = mAlias[2].split(';').map(function(s){return s.trim();}).filter(Boolean); continue; }
       var mBind = codePart.match(/^bind\s+kp_?(\d)\s+"([^"]*)"/i);
-      if (mBind) {
-        binds[parseInt(mBind[1], 10)] = mBind[2].split(';').map(function(s){return s.trim();}).filter(Boolean);
-        continue;
-      }
-      if (inGlobal && codePart.indexOf(' ') > 0) {
-        globalCmds.push(codePart);
-      }
+      if (mBind) { binds[parseInt(mBind[1], 10)] = mBind[2].split(';').map(function(s){return s.trim();}).filter(Boolean); continue; }
+      if (inGlobal && codePart.indexOf(' ') > 0) globalCmds.push(codePart);
     }
-    var nameMatch = text.match(/\/\/\s*CS2 V4ir profile:\s*(.+)/i)
-                  || text.match(/\/\/\s*Crosshair Profile:\s*(.+)/i);
+    var nameMatch = text.match(/\/\/\s*CS2 V4ir profile:\s*(.+)/i) || text.match(/\/\/\s*Crosshair Profile:\s*(.+)/i);
     var profileName = nameMatch ? sanitizeName(nameMatch[1].trim()) : 'Imported profile';
     if (!profileName) profileName = 'Imported profile';
     var slotNames = {};
     var nameRe = /\/\/\s*---\s*Numpad\s+(\d)\s*:\s*(.+?)\s*---/gi;
     var m;
-    while ((m = nameRe.exec(text)) !== null) {
-      slotNames[parseInt(m[1], 10)] = m[2].trim();
-    }
-    var result = {
-      name: profileName,
-      crosshairs: {},
-      global: defaultGlobals()
-    };
+    while ((m = nameRe.exec(text)) !== null) slotNames[parseInt(m[1], 10)] = m[2].trim();
+    var result = { name: profileName, crosshairs: {}, global: defaultGlobals() };
     applyGlobalCommands(result.global, globalCmds);
     for (var slot in binds) {
       if (!binds.hasOwnProperty(slot)) continue;
-      var chain = binds[slot];
-      var allCmds = [];
+      var chain = binds[slot]; var allCmds = [];
       for (var j = 0; j < chain.length; j++) {
-        if (aliases[chain[j]]) allCmds = allCmds.concat(aliases[chain[j]]);
-        else allCmds.push(chain[j]);
+        if (aliases[chain[j]]) allCmds = allCmds.concat(aliases[chain[j]]); else allCmds.push(chain[j]);
       }
       var ch = cmdsToCrosshair(allCmds);
       ch.name = slotNames[slot] || ('Crosshair ' + slot);
@@ -992,15 +776,11 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
     }
     return result;
   }
-
   function applyGlobalCommands(g, cmds) {
     for (var i = 0; i < cmds.length; i++) {
-      var parts = cmds[i].trim().split(/\s+/);
-      if (parts.length < 2) continue;
-      var key = parts[0].toLowerCase();
-      var val = parts.slice(1).join(' ');
-      var nv = parseFloat(val);
-      var bv = (val === '1' || val === 'true');
+      var parts = cmds[i].trim().split(/\s+/); if (parts.length < 2) continue;
+      var key = parts[0].toLowerCase(); var val = parts.slice(1).join(' ');
+      var nv = parseFloat(val); var bv = (val === '1' || val === 'true');
       switch (key) {
         case 'cl_crosshair_sniper_width': g.sniperWidth = isNaN(nv) ? g.sniperWidth : nv; break;
         case 'cl_sniper_show_inaccuracy': g.sniperShowInaccuracy = bv; break;
@@ -1008,13 +788,10 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
         case 'cl_sniper_auto_rezoom': g.sniperAutoRezoom = bv; break;
         case 'cl_grenadecrosshair_keepusercrosshair': g.grenadeKeepUserCrosshair = bv; break;
         case 'cl_grenadecrosshair_flash': g.grenadeFlash = bv; break;
-        case 'cl_grenadecrosshair_explosive':
-        case 'cl_grenadecrosshair_he': g.grenadeExplosive = bv; break;
-        case 'cl_grenadecrosshair_fire':
-        case 'cl_grenadecrosshair_molotov': g.grenadeFire = bv; break;
+        case 'cl_grenadecrosshair_explosive': case 'cl_grenadecrosshair_he': g.grenadeExplosive = bv; break;
+        case 'cl_grenadecrosshair_fire': case 'cl_grenadecrosshair_molotov': case 'cl_grenadecrosshair_incgrenade': g.grenadeFire = bv; break;
         case 'cl_grenadecrosshair_smoke': g.grenadeSmoke = bv; break;
         case 'cl_grenadecrosshair_decoy': g.grenadeDecoy = bv; break;
-        case 'cl_grenadecrosshair_incgrenade': g.grenadeFire = bv; break; // legacy alias
         case 'cl_grenadecrosshairdelay_flash': g.grenadeDelayFlash = isNaN(nv) ? g.grenadeDelayFlash : nv; break;
         case 'cl_grenadecrosshairdelay_explosive': g.grenadeDelayExplosive = isNaN(nv) ? g.grenadeDelayExplosive : nv; break;
         case 'cl_grenadecrosshairdelay_fire': g.grenadeDelayFire = isNaN(nv) ? g.grenadeDelayFire : nv; break;
@@ -1023,54 +800,42 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
       }
     }
   }
-
   function cmdsToCrosshair(cmds) {
-    var ch = defaultCrosshair();
-    ch.name = 'Imported';
+    var ch = defaultCrosshair(); ch.name = 'Imported';
     var _outlineDraw = 0;
     for (var i = 0; i < cmds.length; i++) {
-      var parts = cmds[i].trim().split(/\s+/);
-      if (parts.length < 2) continue;
-      var key = parts[0].toLowerCase();
-      var val = parts.slice(1).join(' ');
-      var nv = parseFloat(val);
-      var iv = parseInt(val, 10);
-      var bv = (val === '1' || val === 'true');
+      var parts = cmds[i].trim().split(/\s+/); if (parts.length < 2) continue;
+      var key = parts[0].toLowerCase(); var val = parts.slice(1).join(' ');
+      var nv = parseFloat(val); var iv = parseInt(val, 10); var bv = (val === '1' || val === 'true');
       switch (key) {
         case 'cl_crosshairstyle': ch.style = isNaN(iv) ? ch.style : iv; break;
-        case 'cl_crosshairsize':
-        case 'cl_crosshair_length': ch.length = isNaN(nv) ? ch.length : nv; break;
-        case 'cl_crosshairthickness':
-        case 'cl_crosshair_thickness': ch.thickness = isNaN(nv) ? ch.thickness : nv; break;
-        case 'cl_crosshairgap':
-        case 'cl_crosshair_gap': ch.gap = isNaN(nv) ? ch.gap : nv; break;
+        case 'cl_crosshairsize': case 'cl_crosshair_length': ch.length = isNaN(nv) ? ch.length : nv; break;
+        case 'cl_crosshairthickness': case 'cl_crosshair_thickness': ch.thickness = isNaN(nv) ? ch.thickness : nv; break;
+        case 'cl_crosshairgap': case 'cl_crosshair_gap': ch.gap = isNaN(nv) ? ch.gap : nv; break;
         case 'cl_crosshairdot': ch.centerDotEnabled = bv; break;
         case 'cl_crosshair_t': ch.tStyleEnabled = bv; break;
         case 'cl_crosshair_drawoutline': _outlineDraw = isNaN(iv) ? 0 : iv; break;
-        case 'cl_crosshaircolor': /* legacy preset, ignore */ break;
         case 'cl_crosshaircolor_r': ch.red = isNaN(iv) ? ch.red : iv; break;
         case 'cl_crosshaircolor_g': ch.green = isNaN(iv) ? ch.green : iv; break;
         case 'cl_crosshaircolor_b': ch.blue = isNaN(iv) ? ch.blue : iv; break;
-        case 'cl_crosshairalpha':
-        case 'cl_crosshaircolor_a': ch.alpha = isNaN(iv) ? ch.alpha : iv; break;
-        case 'cl_crosshairoutline_r': ch.outlineR = isNaN(iv) ? ch.outlineR : iv; break;
-        case 'cl_crosshairoutline_g': ch.outlineG = isNaN(iv) ? ch.outlineG : iv; break;
-        case 'cl_crosshairoutline_b': ch.outlineB = isNaN(iv) ? ch.outlineB : iv; break;
-        case 'cl_crosshairoutline_a': ch.outlineA = isNaN(iv) ? ch.outlineA : iv; break;
+        case 'cl_crosshairalpha': case 'cl_crosshaircolor_a': ch.alpha = isNaN(iv) ? ch.alpha : iv; break;
+        case 'cl_crosshairoutline_r': ch.outlineRed = isNaN(iv) ? ch.outlineRed : iv; break;
+        case 'cl_crosshairoutline_g': ch.outlineGreen = isNaN(iv) ? ch.outlineGreen : iv; break;
+        case 'cl_crosshairoutline_b': ch.outlineBlue = isNaN(iv) ? ch.outlineBlue : iv; break;
+        case 'cl_crosshairoutline_a': ch.outlineAlpha = isNaN(iv) ? ch.outlineAlpha : iv; break;
         case 'cl_crosshair_recoil': ch.followRecoil = bv; break;
         case 'cl_crosshair_dynamic_splitdist': ch.splitDistance = isNaN(nv) ? ch.splitDistance : nv; break;
         case 'cl_crosshair_dynamic_maxdist_splitratio': ch.splitSizeRatio = isNaN(nv) ? ch.splitSizeRatio : nv; break;
         case 'cl_crosshair_dynamic_splitalpha_innermod': ch.innerSplitAlpha = isNaN(nv) ? ch.innerSplitAlpha : nv; break;
         case 'cl_crosshair_dynamic_splitalpha_outermod': ch.outerSplitAlpha = isNaN(nv) ? ch.outerSplitAlpha : nv; break;
         case 'cl_crosshair_dynamic_spread_limit': ch.spreadLimit = isNaN(nv) ? ch.spreadLimit : nv; break;
-        case 'cl_ironsight_usecrosshaircolor': ch.ironsightUseCrosshairColor = bv; break;
-        case 'cl_ironsight_dot_scale': ch.ironsightDotScale = isNaN(nv) ? ch.ironsightDotScale : nv; break;
+        case 'cl_ironsight_usecrosshaircolor': ch.scopeDotUseColor = bv; break;
+        case 'cl_ironsight_dot_scale': ch.scopeDotScale = isNaN(nv) ? ch.scopeDotScale : nv; break;
       }
     }
     ch.outlineMode = _outlineDraw ? 1 : 0;
     return ch;
   }
-
   function applyImportedProfile(parsed, label) {
     var slots = Object.keys(parsed.crosshairs);
     if (!slots.length) { toast('No crosshairs found', 1); return; }
@@ -1081,32 +846,20 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
     if (!state.global) state.global = defaultGlobals();
     var dg = defaultGlobals();
     for (var gk in dg) if (state.global[gk] === undefined) state.global[gk] = dg[gk];
-    delete state.global.grenadeHE;
-    delete state.global.grenadeMolotov;
-    delete state.global.grenadeInc;
-    for (var slot in state.crosshairs) {
-      state.crosshairs[slot] = migrateCrosshair(state.crosshairs[slot]);
-    }
-    saveState();
-    renderProf();
-    $('p-prev').classList.add('hidden');
+    for (var slot in state.crosshairs) state.crosshairs[slot] = migrateCrosshair(state.crosshairs[slot]);
+    saveState(); renderProf(); $('p-prev').classList.add('hidden');
     toast(label || ('Imported ' + slots.length + ' crosshairs'));
   }
 
   $('btn-import-json-text').addEventListener('click', function() {
-    var el = $('p-prev');
-    el.classList.remove('hidden');
-    el.innerHTML =
-      '<div class="note" style="margin-bottom:6px">Paste JSON and press "Load":</div>' +
-      '<div class="paste-row">' +
-        '<textarea id="json-import" rows="12" style="font-size:12px;font-family:monospace"></textarea>' +
-        '<button id="json-paste" class="sm primary">📋 Paste</button>' +
-      '</div>' +
+    var el = $('p-prev'); el.classList.remove('hidden');
+    el.innerHTML = '<div class="note" style="margin-bottom:6px">Paste JSON and press "Load":</div>' +
+      '<div class="paste-row"><textarea id="json-import" rows="12" style="font-size:12px;font-family:monospace"></textarea>' +
+      '<button id="json-paste" class="sm primary">📋 Paste</button></div>' +
       '<button id="json-load" class="sm primary" style="margin-top:6px">Load</button>';
     $('json-paste').addEventListener('click', function() { pasteFromClipboard($('json-import')); });
     $('json-load').addEventListener('click', function() {
-      var raw = $('json-import').value.trim();
-      if (!raw) { toast('Empty', 1); return; }
+      var raw = $('json-import').value.trim(); if (!raw) { toast('Empty', 1); return; }
       try {
         var parsed = JSON.parse(raw);
         if (!parsed || !parsed.crosshairs) throw new Error('Missing "crosshairs" field');
@@ -1117,7 +870,6 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
     });
     scrollIntoViewSoft(el);
   });
-
   $('btn-import-json-file').addEventListener('click', function() {
     pickFile('.json,application/json', function(text, name) {
       try {
@@ -1129,35 +881,22 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
       } catch (e) { toast('JSON error: ' + e.message, 1); }
     });
   });
-
   $('btn-import-cfg-text').addEventListener('click', function() {
-    var el = $('p-prev');
-    el.classList.remove('hidden');
-    el.innerHTML =
-      '<div class="note" style="margin-bottom:6px">Paste V4ir-generated .cfg and press "Load":</div>' +
-      '<div class="paste-row">' +
-        '<textarea id="cfg-import" rows="12" style="font-size:12px;font-family:monospace"></textarea>' +
-        '<button id="cfg-paste" class="sm primary">📋 Paste</button>' +
-      '</div>' +
+    var el = $('p-prev'); el.classList.remove('hidden');
+    el.innerHTML = '<div class="note" style="margin-bottom:6px">Paste V4ir-generated .cfg and press "Load":</div>' +
+      '<div class="paste-row"><textarea id="cfg-import" rows="12" style="font-size:12px;font-family:monospace"></textarea>' +
+      '<button id="cfg-paste" class="sm primary">📋 Paste</button></div>' +
       '<button id="cfg-load" class="sm primary" style="margin-top:6px">Load</button>';
     $('cfg-paste').addEventListener('click', function() { pasteFromClipboard($('cfg-import')); });
     $('cfg-load').addEventListener('click', function() {
-      var raw = $('cfg-import').value;
-      if (!raw || !raw.trim()) { toast('Empty', 1); return; }
-      try {
-        var parsed = parseV4irCfg(raw);
-        applyImportedProfile(parsed, 'CFG loaded');
-      } catch (e) { toast('Parse error: ' + e.message, 1); }
+      var raw = $('cfg-import').value; if (!raw || !raw.trim()) { toast('Empty', 1); return; }
+      try { var parsed = parseV4irCfg(raw); applyImportedProfile(parsed, 'CFG loaded'); } catch (e) { toast('Parse error: ' + e.message, 1); }
     });
     scrollIntoViewSoft(el);
   });
-
   $('btn-import-cfg-file').addEventListener('click', function() {
     pickFile('.cfg,.txt,text/plain', function(text, name) {
-      try {
-        var parsed = parseV4irCfg(text);
-        applyImportedProfile(parsed, 'Imported from ' + name);
-      } catch (e) { toast('Parse error: ' + e.message, 1); }
+      try { var parsed = parseV4irCfg(text); applyImportedProfile(parsed, 'Imported from ' + name); } catch (e) { toast('Parse error: ' + e.message, 1); }
     });
   });
 
@@ -1165,48 +904,31 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
     mimeType = mimeType || 'text/plain';
     if (window.showSaveFilePicker) {
       try {
-        var handle = await window.showSaveFilePicker({
-          suggestedName: filename,
-          types: [{ description: 'File', accept: { 'text/plain': ['.cfg', '.json', '.txt'] } }]
-        });
-        var writable = await handle.createWritable();
-        await writable.write(text);
-        await writable.close();
-        toast('File saved');
-        return;
-      } catch (e) {
-        if (e && e.name === 'AbortError') return;
-        console.warn('showSaveFilePicker failed', e);
-      }
+        var handle = await window.showSaveFilePicker({ suggestedName: filename, types: [{ description: 'File', accept: { 'text/plain': ['.cfg', '.json', '.txt'] } }] });
+        var writable = await handle.createWritable(); await writable.write(text); await writable.close();
+        toast('File saved'); return;
+      } catch (e) { if (e && e.name === 'AbortError') return; console.warn('showSaveFilePicker failed', e); }
     }
     try {
       var blob = new Blob([text], { type: mimeType + ';charset=utf-8' });
       var url = URL.createObjectURL(blob);
-      var a = document.createElement('a');
-      a.href = url; a.download = filename; a.style.display = 'none';
+      var a = document.createElement('a'); a.href = url; a.download = filename; a.style.display = 'none';
       document.body.appendChild(a); a.click(); document.body.removeChild(a);
       setTimeout(function() { URL.revokeObjectURL(url); }, 2000);
-      toast('File ' + filename + ' downloaded');
-      return;
+      toast('File ' + filename + ' downloaded'); return;
     } catch (e) { console.warn('download failed', e); }
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      try { await navigator.clipboard.writeText(text); toast('Copied to clipboard'); return; }
-      catch (e) { console.warn('clipboard failed', e); }
+      try { await navigator.clipboard.writeText(text); toast('Copied to clipboard'); return; } catch (e) { console.warn('clipboard failed', e); }
     }
     showTextFallback(text);
   }
   function showTextFallback(text) {
-    var el = $('p-prev');
-    el.classList.remove('hidden');
-    el.innerHTML =
-      '<div class="note" style="margin-bottom:6px">Copy manually (Ctrl+C / long-press → Copy):</div>' +
+    var el = $('p-prev'); el.classList.remove('hidden');
+    el.innerHTML = '<div class="note" style="margin-bottom:6px">Copy manually (Ctrl+C / long-press → Copy):</div>' +
       '<textarea id="manual-copy" rows="15" style="width:100%;font-size:12px;font-family:monospace"></textarea>';
-    var ta = $('manual-copy');
-    ta.value = text; ta.focus(); ta.select();
-    toast('Select and copy', 1);
-    scrollIntoViewSoft(el);
+    var ta = $('manual-copy'); ta.value = text; ta.focus(); ta.select();
+    toast('Select and copy', 1); scrollIntoViewSoft(el);
   }
-
   $('btn-export').addEventListener('click', function() {
     if (!Object.keys(state.crosshairs).length) { toast('Profile is empty', 1); return; }
     exportText(genCFG(), slug(state.name) + '.cfg');
@@ -1226,30 +948,10 @@ button.sm{padding:7px 10px;font-size:12px;margin-top:0;border-radius:5px;min-wid
     });
   });
 
-  // ================== START ==================
   loadState();
   bindGlobals();
   renderProf();
-
-  var libUrls = [
-    'https://cdn.jsdelivr.net/npm/csgo-sharecode@6.0.0/dist/index.js',
-    'https://unpkg.com/csgo-sharecode@6.0.0/dist/index.js'
-  ];
-  (async function loadLib() {
-    for (var u = 0; u < libUrls.length; u++) {
-      try {
-        var mod = await import(libUrls[u]);
-        lib = mod;
-        console.log('csgo-sharecode loaded from ' + libUrls[u]);
-        renderProf();
-        return;
-      } catch (e) {
-        console.warn('load failed: ' + libUrls[u], e);
-        libErr = e;
-      }
-    }
-    console.warn('all CDNs failed');
-  })();
+  if (!CS2Decode) console.warn('cs2-decode.js not loaded — check that the file is next to index.html');
 
 })();
 </script>
